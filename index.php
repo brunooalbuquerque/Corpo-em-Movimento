@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html class="no-js">
 <?php
 session_start();
+if (!isset($_SESSION['logado'])) {
+  $_SESSION['logado'] = "";
+}
 include "includes/conexao.php";
 if(!$_SESSION['logado'] && !(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 $teste=0;
 } else{
 $teste=1;
-}  ?>
+}
+?>
+
+<!DOCTYPE html>
+<html class="no-js">
 <head>
   <!-- BASICS -->
   <meta charset="utf-8">
@@ -360,24 +365,18 @@ function myFunction() {
           <div class="wow bounceIn" data-animation-delay="4.8s">
             <div class="team-member">
               <div class="profile-picture">
-                <figure><img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/10670172_669823846466880_4011887733632278919_n.jpg?_nc_cat=106&_nc_ht=scontent-gru2-2.xx&oh=9a04dd83647b97be3a19fa74e75b54aa&oe=5D2ACA13" alt=""></figure>
+                <figure><img src="img/team/gabriel_photo.jpg" alt="foto Gabriel"></figure>
                 <div class="profile-overlay"></div>
                 <div class="profile-social">
-                  <div class="icons-wrapper">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                  </div>
                 </div>
               </div>
               <div class="team-detail">
                 <h4>Gabriel Previato</h4>
+                <div class="icons-wrapper">
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
                 <span>Desenvolvedor</span>
-              </div>
-              <div class="team-bio">
-                <p>Gabriel foi um dos desenvolvedores e cuidou do design e programação.</p>
               </div>
             </div>
           </div>
@@ -387,24 +386,18 @@ function myFunction() {
           <div class="wow bounceIn">
             <div class="team-member">
               <div class="profile-picture">
-                <figure><img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/57544649_2121379651294135_3521005169829478400_n.jpg?_nc_cat=101&_nc_ht=scontent-gru2-2.xx&oh=ce52cad96366f9772b87c68a002af049&oe=5D2F51EF" alt=""></figure>
+                <figure><img src="img/team/bruno_photo.jpg" alt="foto do Bruno"></figure>
                 <div class="profile-overlay"></div>
                 <div class="profile-social">
-                  <div class="icons-wrapper">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                  </div>
                 </div>
               </div>
               <div class="team-detail">
-                <h4>Yuri Steck</h4>
+                <h4>Bruno Albuquerque</h4>
+                <div class="icons-wrapper">
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                  </div>
                 <span>Desenvolvedor</span>
-              </div>
-              <div class="team-bio">
-                <p>Yuri foi um dos desenvolvedores e cuidou do design e programação.</p>
               </div>
             </div>
           </div>
@@ -413,24 +406,19 @@ function myFunction() {
           <div class="wow bounceIn">
             <div class="team-member">
               <div class="profile-picture">
-                <figure><img src="https://scontent-gru2-2.xx.fbcdn.net/v/t1.0-9/15823591_847720682037282_4513037949313662686_n.jpg?_nc_cat=111&_nc_ht=scontent-gru2-2.xx&oh=f006b982cc30dce6d02dc12ca6876967&oe=5D665A2C" alt=""></figure>
+                <figure><img src="img/team/yuri_photo.jpg" alt="foto do yuri steck"></figure>
                 <div class="profile-overlay"></div>
                 <div class="profile-social">
-                  <div class="icons-wrapper">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                  </div>
+              
                 </div>
               </div>
               <div class="team-detail">
-                <h4>Bruno Talieri</h4>
+                <h4>Yuri Steck</h4>
+                <div class="icons-wrapper">
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                  </div>
                 <span>Desenvolvedor</span>
-              </div>
-              <div class="team-bio">
-                <p>Bruno foi um dos desenvolvedores e cuidou do design e programação.</p>
               </div>
             </div>
           </div>

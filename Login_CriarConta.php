@@ -1,3 +1,17 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
+<script type="text/javascript">
+function alertcontanexiste() { 
+  Swal.fire({
+  type: 'error',
+  text: 'E-mail ou senha inválido!',
+  showConfirmButton: false,
+  timer: 2000
+})
+}
+</script>
+
+
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -133,9 +147,7 @@ body {
 </style>
   
 </head>
-
 <body>
-
   <p class="tip"></p>
 <div class="cont">
   <div class="form sign-in">
@@ -143,7 +155,7 @@ body {
     <form  name="cadastro" method="post" action="SalvarBD/SaveLogin.php" id="form">
     <label>
       <span>Email</span>
-      <input type="email" name="email" id="email" required  />
+      <input type="email" name="email" id="email" required/>
     </label>
     <label>
       <span>Senha</span>
@@ -190,6 +202,19 @@ body {
     </form>
     </div>
   </div>
+
+<?php
+session_start();
+if($_SESSION['logado'] ){
+  header("location:index.php");
+ }
+
+if($_SESSION['errou']=TRUE){
+  echo $_SESSION['errou'];
+  $_SESSION['errou']=FALSE;
+  echo "<script>alertcontanexiste();</script>";
+}
+?>
 
       <script  src="js/index.js"></script>
 </div>

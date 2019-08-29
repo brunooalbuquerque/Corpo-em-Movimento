@@ -1491,7 +1491,7 @@ About
 .team-member .profile-picture .profile-overlay {
   height: 94%;
   width: 94%;
-  background-color: #b4dba7;
+  background-color: #ffffff;
   position: absolute;
   top: 3%;
   left: 3%;
@@ -1574,7 +1574,7 @@ About
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  background-color: #41A64A;
+  background-color: #ffffff;
   padding: 0 20px 20px;
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
@@ -1595,7 +1595,7 @@ About
 }
 
 .team-member:hover {
-  background-color: #41A64A
+  background-color: #cccccc;
 }
 
 .team-member:hover .profile-picture .profile-overlay {

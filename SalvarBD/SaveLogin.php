@@ -21,22 +21,21 @@ session_start();
 include "../includes/conexao.php";
 $email=$_POST['email'];
 $senha=$_POST['senha'];
+$senha = md5($senha);
 
-$query = mysqli_query($conexao, "SELECT COUNT(*) FROM usuarios WHERE email ='".$_POST['email']."' and senha = '".$_POST['senha']."'");
+$query = mysqli_query($conexao, "SELECT COUNT(*) FROM usuarios WHERE email ='".$_POST['email']."' and senha = '$senha'");
 
 $count = mysqli_fetch_array($query,MYSQLI_NUM)[0];
  if($count > 0){
-   $query2 = sprintf( "SELECT nome FROM usuarios WHERE email ='".$_POST['email']."'");
+   $query2 = sprintf( "SELECT nome, id FROM usuarios WHERE email ='".$_POST['email']."'");
    $dados = mysqli_query( $conexao,$query2) or die(mysqli_error());
    $linha = mysqli_fetch_assoc($dados);
+
    $_SESSION['user']=$linha['nome'];
-
-
-   $query3 = sprintf( "SELECT id FROM usuarios WHERE email ='".$_POST['email']."'");
-   $dados3 = mysqli_query( $conexao,$query3) or die(mysqli_error());
-   $linha3 = mysqli_fetch_assoc($dados3);
    $idzao = $_SESSION['id']=$linha3['id'];
    $_SESSION['logado']=TRUE;
+
+
 
    $query4 = mysqli_query($conexao, "SELECT COUNT(*) FROM formcorp WHERE id_usuario ='$idzao'");
    $num = mysqli_fetch_array($query4,MYSQLI_NUM)[0];
@@ -45,9 +44,10 @@ $count = mysqli_fetch_array($query,MYSQLI_NUM)[0];
 }else{
   header("location:../FormCorp.php");
        }    
-
  }
  else{
-  echo "<script> alertcontanexiste(); </script>";
+  $_SESSION['errou']=TRUE;
+  header("location:../Login_CriarConta.php");
+  //echo "<script> alertcontanexiste(); </script>";
  }
 ?>

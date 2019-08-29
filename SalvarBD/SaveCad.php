@@ -22,9 +22,10 @@ include "../includes/conexao.php";
     $nome= $_POST ["nome2"];
     $email= $_POST ["email2"];
     $senha= $_POST ["senha2"];
+    $senha = md5($senha);
     $id = $_SESSION['id'];
             //Upload efetuado com sucesso, eibe a mensagem
-            $query = mysqli_query($conexao, "SELECT COUNT(*) FROM `usuarios` WHERE email ='".$_POST['email2']."'");
+            $query = mysqli_query($conexao, "SELECT COUNT(*) FROM `usuarios` WHERE email ='$senha'");
             $count = mysqli_fetch_array($query,MYSQLI_NUM)[0];
             if($count > 0)
             {
