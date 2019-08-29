@@ -1,0 +1,119 @@
+
+        .control {
+            font-family: arial;
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 11px;
+            padding-top: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+            .control input {
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+            }
+        .control_indicator {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background: #d0dad1;
+            border: 0px dotted #00ad5f;
+        }
+        .control-radio .control_indicator {
+            border-radius: 35%;
+        }
+        
+        .control:hover input ~ .control_indicator,
+        .control input:focus ~ .control_indicator {
+            background: #cccccc;
+        }
+        
+        .control input:checked ~ .control_indicator {
+            background: #00ad5f;
+        }
+        .control:hover input:not([disabled]):checked ~ .control_indicator,
+        .control input:checked:focus ~ .control_indicator {
+            background: #00ad5f;
+        }
+        .control input:disabled ~ .control_indicator {
+            background: #e6e6e6;
+            opacity: 35;
+            pointer-events: none;
+        }
+        .control_indicator:after {
+            box-sizing: unset;
+            content: '';
+            position: absolute;
+            display: none;
+        }
+        .control input:checked ~ .control_indicator:after {
+            display: block;
+        }
+        .control-radio .control_indicator:after {
+            left: 7px;
+            top: 7px;
+            height: 7px;
+            width: 6px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+        .control-radio input:disabled ~ .control_indicator:after {
+            background: #7b7b7b;
+        }
+        .select {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+            width: 100%;
+        }    .select select {
+                font-family: 'Arial';
+                display: inline-block;
+                width: 100%;
+                cursor: pointer;
+                padding: 10px 15px;
+                outline: 0;
+                border: 0px solid #000000;
+                border-radius: 0px;
+                background: #00ad5f;
+                color: #ffffff;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+                .select select::-ms-expand {
+                    display: none;
+                }
+                .select select:hover,
+                .select select:focus {
+                    color: #ffffff;
+                    background: #00ad5f;
+                }
+                .select select:disabled {
+                    opacity: 1;
+                    pointer-events: none;
+                }
+        .select_arrow {
+            position: absolute;
+            top: 16px;
+            right: 15px;
+            width: 0px;
+            height: 0px;
+            border: solid #ffffff;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        .select select:hover ~ .select_arrow,
+        .select select:focus ~ .select_arrow {
+            border-color: #ffffff;
+        }
+        .select select:disabled ~ .select_arrow {
+            border-top-color: #cccccc;
+        }
+        
