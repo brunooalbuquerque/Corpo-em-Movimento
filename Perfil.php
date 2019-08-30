@@ -11,10 +11,10 @@ header("location:index.php");
 $id = $_SESSION['id'];
 $barrar = sprintf("SELECT id_usuario  FROM formcorp WHERE id_usuario=$id");
 $dados = mysqli_query( $conexao,$barrar) or die(mysqli_error());
-                       $num = mysqli_fetch_array($dados,MYSQLI_NUM)[0];
-                                      if ($num != 1){
-                                        echo '<script> window.location.replace("FormCorp.php"); </script>';
-                                      }
+$num = mysqli_fetch_array($dados,MYSQLI_NUM)[0];
+if ($num != 1){
+echo '<script> window.location.replace("FormCorp.php"); </script>';
+}
 ?>
   <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
