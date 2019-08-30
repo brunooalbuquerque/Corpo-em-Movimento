@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
+    	<script type="text/javascript">
+function senhaigual() { 
+  Swal.fire({
+  type: 'error',
+  title: 'Hmmm...',
+  text: 'Sua nova senha não pode ser igual a antiga!',
+  confirmButtonText:	'OK',
+  timer: 2000,
+})
+}
+
+function senhaerrada() { 
+ Swal.fire({
+ type: 'error',
+ title: 'Hmmm...',
+ text: 'A senha digitada não é a sua senha atual!',
+ confirmButtonText:	'OK',
+ timer: 2000,
+})
+}
+function senhaalterada() { 
+Swal.fire({
+  position: 'top-start',
+  type: 'success',
+  title: 'Senha alterada com sucesso!',
+  showConfirmButton: false,
+  timer: 1200,
+  onClose(){
+ window.location.replace("Perfil.php");
+}
+})
+}
+</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -57,11 +91,20 @@ session_start();
 include "includes/conexao.php";
 if(!$_SESSION['logado'] && !(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 header("location:index.php");
-} else{
-
-}  ?>
+}
+?>
   <body>
-
+  <?php
+if(intval($_GET['codigo']) == 1){
+    echo "<script> senhaigual(); </script>";
+}
+if(intval($_GET['codigo']) == 2){
+    echo "<script> senhaalterada(); </script>";
+}
+if(intval($_GET['codigo']) == 3){
+    echo "<script> senhaerrada(); </script>"; 
+}
+?>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS

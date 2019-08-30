@@ -13,69 +13,24 @@ $linha = mysqli_fetch_assoc($dados);
 
 $senha=$_POST ["novasenha"];
 $oldsenha=$_POST['oldsenha'];
-
+$oldsenha = md5($oldsenha);
+$senha = md5($senha);
 if($oldsenha == $linha['senha']){
-
 			if ($senha == $linha['senha']){
-      //senha nova igual a antiga
-      
-			echo "<script> senhaigual(); </script>"; 
+      //senha nova igual a antiga 
+      header("location:../Senha.php?codigo=1");
 			}
 			else{		
 	$result_usuario = "UPDATE usuarios SET senha = '$senha' WHERE nome = '".$_SESSION['user']."'";
 	$resultado_usuario = mysqli_query($conexao, $result_usuario);	
 	
-	echo "<script> senhaalterada(); </script>"; 
+   
+  header("location:../Perfil.php?codigo=2");
 			}
 		}else{
-  echo "oi";
-			echo "<script> senhaerrada(); </script>"; 
+      
+      header("location:../Senha.php?codigo=3");
 		}
 
 		?>	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
-    	<script type="text/javascript">
-function senhaigual() { 
-  Swal.fire({
-  type: 'error',
-  title: 'Hmmm...',
-  text: 'Sua nova senha não pode ser igual a antiga!',
-  confirmButtonText:	'OK',
-  backdrop: `
-  rgba(233, 63, 63, 0.88)
-  `,
-  timer: 6000,
-  onClose(){
-  window.location.replace("../Senha.php");
-}
-})
-}
-
-function senhaerrada() { 
- Swal.fire({
- type: 'error',
- title: 'Hmmm...',
- text: 'A senha digitada não é a sua senha atual!',
- confirmButtonText:	'OK',
- backdrop: `
- rgba(233, 63, 63, 0.88)
- `,
- timer: 6000,
- onClose(){
- window.location.replace("../Senha.php");
-}
-})
-}
-function senhaalterada() { 
-Swal.fire({
-  position: 'top-start',
-  type: 'success',
-  title: 'Senha alterada com sucesso!',
-  showConfirmButton: false,
-  timer: 1200,
-  onClose(){
- window.location.replace("../Perfil.php");
-}
-})
-}
-</script>
+    

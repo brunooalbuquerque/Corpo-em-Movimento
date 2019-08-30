@@ -8,6 +8,13 @@ include "includes/conexao.php";
 if(!$_SESSION['logado'] && !(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 header("location:index.php");
 }
+$id = $_SESSION['id'];
+$barrar = sprintf("SELECT id_usuario  FROM formcorp WHERE id_usuario=$id");
+$dados = mysqli_query( $conexao,$barrar) or die(mysqli_error());
+                       $num = mysqli_fetch_array($dados,MYSQLI_NUM)[0];
+                                      if ($num != 1){
+                                        echo '<script> window.location.replace("FormCorp.php"); </script>';
+                                      }
 ?>
   <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
@@ -27,7 +34,9 @@ header("location:index.php");
 
       <?php
         $page="perfil";
-       include "includes/sidebar.php" ?>
+       include "includes/sidebar.php" 
+      
+       ?>
 
 
       <section id="main-content">
@@ -36,6 +45,7 @@ header("location:index.php");
               <div class="row"> 
                   <div class="col-lg-9 main-chart">
                       <?php
+                       
 
                       $query = sprintf("SELECT id_exercicio, Datas FROM lista_exercicios WHERE id_usuario=$id order by id_exercicio");
                       $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
@@ -83,13 +93,6 @@ header("location:index.php");
 
                       $datas3 = date('d-m-Y', strtotime($linha3['Datas']));
                       $datas4 = date('d-m-Y', strtotime('+30 days',strtotime($datas3)));
-                      // calcula quantos dados retornaram
-                    // $query3 = sprintf("SELECT ID, id_usuario, id_exercicio, Datas FROM exerciciosaleatorios WHERE id_usuario=$id");
-                      // executa a query
-
-                      //$dados3 = mysqli_query( $conexao,$query3) or die(mysqli_error());
-                      // transforma os dados em um array
-                     // $linha3 = mysqli_fetch_assoc($dados3);
 
                       $query4 = sprintf("SELECT ID, NomeAlimento, tipo_alimento FROM alimentos ");
                       // executa a query

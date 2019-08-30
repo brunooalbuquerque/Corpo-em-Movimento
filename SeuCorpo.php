@@ -117,6 +117,7 @@ echo utf8_encode($dica);
 								<div class="white-header">
 									<h5>SUA SAÚDE</h5>
 								</div>
+                <font color="Green"><h4><b>IMC: <?=$IMC;?></b><h4></font>
 									<div class="row">
                                         <div class="col-md-6">
 											<p class="small mt">CLACIFICAÇÂO</p>

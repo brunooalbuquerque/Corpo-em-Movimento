@@ -1,21 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" >
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
+<head>
 <script type="text/javascript">
 function alertcontanexiste() { 
   Swal.fire({
   type: 'error',
   text: 'E-mail ou senha inválido!',
   showConfirmButton: false,
+  showCloseButton: true,
   timer: 2000
 })
 }
 </script>
-
-
-
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="img/LogoIcon.ico"/>
     <title>Login - Corpo em Movimento</title>
@@ -204,14 +201,7 @@ body {
   </div>
 
 <?php
-session_start();
-if($_SESSION['logado'] ){
-  header("location:index.php");
- }
-
-if($_SESSION['errou']=TRUE){
-  echo $_SESSION['errou'];
-  $_SESSION['errou']=FALSE;
+if(intval($_GET['codigo']) == 1){
   echo "<script>alertcontanexiste();</script>";
 }
 ?>

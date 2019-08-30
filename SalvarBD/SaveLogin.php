@@ -32,7 +32,7 @@ $count = mysqli_fetch_array($query,MYSQLI_NUM)[0];
    $linha = mysqli_fetch_assoc($dados);
 
    $_SESSION['user']=$linha['nome'];
-   $idzao = $_SESSION['id']=$linha3['id'];
+   $idzao = $_SESSION['id']=$linha['id'];
    $_SESSION['logado']=TRUE;
 
 
@@ -46,8 +46,8 @@ $count = mysqli_fetch_array($query,MYSQLI_NUM)[0];
        }    
  }
  else{
-  $_SESSION['errou']=TRUE;
-  header("location:../Login_CriarConta.php");
+
+  header("location:../Login_CriarConta.php?codigo=1");
   //echo "<script> alertcontanexiste(); </script>";
  }
 ?>

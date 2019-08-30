@@ -1,5 +1,4 @@
 <?php
-
 $id=$_SESSION['id'];
 $query4 = sprintf("SELECT dieta, imc FROM formcorp WHERE id_usuario=$id");
                       // executa a query
