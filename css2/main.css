@@ -43,10 +43,10 @@ a {
     text-decoration: none; 
 }
 .oioi:hover{
-  text-decoration: none;
+ 
   text-decoration: underline; 
-  color: #ffffff;
-  text-decoration: none; 
+  color: #ccc;
+  
 }
 
 a:focus {
@@ -182,7 +182,10 @@ iframe {
 table {
   width: 100%;
 }
-
+.centralizar {
+  text-align: center;
+  
+}
 th, td {
   font-weight: unset;
   padding-right: 10px;

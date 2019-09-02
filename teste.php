@@ -116,61 +116,79 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
                 ?>
              
             
-  <table class="table table-hover table-success">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Dia</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Quantidade</th>
-      <th scope="col">Musculo Alvo</th>
-      <th scope="col">Alvo</th>
-      <th scope="col">Demonstração</th>
-    </tr>
-  </thead>
+             <?php
+          if ($dieta=='sim') {
+              ?>
+             
+                              
+     <h3><font color="green"><?=$datas3?> &nbsp;&nbsp; &nbsp;&nbsp;<?=$datas4?></font></h3>
+   <!--  <a href="SalvarBD/Alimentos.php?codigo=<?=$AlterarManual3?>">
+    <button class="contact3-form-btn">Atualizar Dieta &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
+   </a> --> 
+<a>
+     <button class="contact3-form-btn" onclick="attexerc();"S>Atualizar Dieta &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
+</a>
 
-  <?php
-    $i = -1;
-    $e = 1;
-    if($QuantExcerc > 0) {
-    $i++;
-                                                      
-    do {
-    if ($linha['id_exercicio']==$linha2['ID']) {
-    ?>                                                
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><?php
-      if($e < 2){echo "Segunda-Feira";}
-      if($e >2 && $e < 4){echo "Terça-Feira";}
-      if($e >4 && $e < 6){echo "Quarta-Feira";}
-      if($e >6 && $e < 8){echo "Quinta-Feira";}
-      if($e > 8 && $e < 10 ){echo "Sexta-Feira";}
-      ?>
-      </td>
-      <td><?=utf8_encode($linha2['Nome'])?></td>
-      <td><?=$linha2['Quantidade']?></td>
-      <td><?=$linha2['MuscAlvo']?></td>
-      <td><?=$linha2['tipo_exercicio']?></td>
-      <td><a class="oioi" href="<?=$linha2['Link']?>" target="_blank">
-      <i class="fa fa-youtube-play" aria-hidden="true"></i></td>
-      </tr>
-  </tbody>
-</table>
-<?php 
-                    $linha = mysqli_fetch_assoc($dados);
-                    }else{
-                    $e--;
-                    }
-                    $i++;         
-                    $e++;
-                    }while($linha2 = mysqli_fetch_assoc($dados2));
-                    }
-                    mysqli_free_result($dados);
-                    mysqli_free_result($dados2);
+                              <div class="container-table100">   
+                                  <div class="wrap-table100">
+                                      <div class="table100 ver1 m-b-110">
+                                          <div class="table100-head">
+                                              <table>
+                                                  <thead>
+                                                      <tr class="row100 head">
+                                                          <th class="cell100 column1">Período</th>
+                                                          <th class="cell100 column2">Refeição</th> 
+                                                          <th class="cell100 column7">Trocar</th>
+                                                      </tr>
+                                                  </thead>
+                                              </table>
+                                          </div>
+                                          <?php
+                                          $r=1;
+                                                      $i3 = -1;
+                                                      if($total3 > 0) {
+                                                      $i3++;
+                                                      do {
+                                                 if ($linha3['id_alimento']==$linha4['ID']) {
+                                              ?>                             
+                                          <div class="table100-body js-pscroll">
+                                              <table>
+                                                  <tbody>
+                                                      <tr class="row100 body">
+                                                      <td class="cell100 column1"><?php 
+                                                          if($r < 2){echo "Café da manhã";}
+                                                          if($r >2 && $r < 4){echo "Almoço";}
+                                                          if($r >4 && $r < 6){echo "Jantar";}
+                                                          if($r >6 && $r < 8){echo "Extra";}
+                                                         
+                                                          ?></td>
+                                                          <td class="cell100 column2"><?=utf8_encode($linha4['NomeAlimento'])?></td>
+                                                          <td class="cell100 column7"><?=$linha4['tipo_alimento']?></i></td>
+                                                         </tr>
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                          <?php 
+                                    $linha3 = mysqli_fetch_assoc($dados3);
+                                         }else {
+                                          $r--;
+                                        }
+                                   
+                      // finaliza o loop que vai mostrar os dados
+                                $i3++;    $r++;     
+                      }while($linha4 = mysqli_fetch_assoc($dados4));
+                      }
+                      mysqli_free_result($dados3);
+                      mysqli_free_result($dados4);
                       ?>
-
+                                      </div>
+                                  </div>
+                              </div>
+                              <?php }
+          ?> </div>
+                          
+                     </div>
+                     
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
