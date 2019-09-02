@@ -59,7 +59,6 @@ $teste=1;
             <li><a href="#services">O que Oferecemos</a></li>
             <li><a href="#team">Time</a></li>
             <li><a id="login" href="Login_CriarConta.php">Login</a></li>
-            <li><a href="#section-works">Portfolio</a></li>
             <li><a id="perfil" href="perfil.php">Meu Perfil</a></li>
             <li><a id= "sair" href="SalvarBD/logout.php">Sair</a></li>
           </ul>
@@ -108,18 +107,11 @@ document.getElementById("login").style.display = "none";
               <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
                 <form class="form-inline">
                   <div class="form-group">
-                    <button type="livedemo" onclick="myFunction()" class="btn" required="required">Dicas</button> 
+                   
                   </div>
                   <div class="form-group">
-                    <button type="getnow" onclick="myFunction()" class="btn" required="required">Formulario do Corpo</button>
+
                   </div>
-
-                  <script>
-function myFunction() {
-  window.location.replace('http://sidanmor.com');
-}
-</script>
-
                 </form>
               </div>
             </div>
@@ -138,11 +130,11 @@ function myFunction() {
               <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.6s">
                 <form class="form-inline">
                   <div class="form-group">
-                    <button type="livedemo" onclick="myFunction()" class="btn" required="required">Dicas</button>
+                   
                       
                   </div>
                   <div class="form-group">
-                    <button type="getnow" onclick="myFunction()" class="btn" required="required">Formulario do Corpo</button>
+
                   </div>
                 </form>
               </div>
@@ -189,9 +181,9 @@ function myFunction() {
                   <ul>
 
                     <div class="slide-body" data-group="slide">
-                      <li><img alt="" class="img-responsive" src="https://www.saudemelhor.com/wp-content/uploads/2017/01/frutas-diabetes.jpg" width="100%" height="350" /></li>
-                      <li><img alt="" class="img-responsive" src="https://www.saudedia.com.br/wp-content/uploads/2019/02/lanches-saudaveis-que-ajudam-a-perder-peso.jpg" width="100%" height="350" /></li>
-                      <li><img alt="" class="img-responsive" src="https://www.colombo.com.br/blog/wp-content/uploads/2015/09/destacada.gif" width="100%" height="350" /></li>
+                    <li><img alt="" class="img-responsive" src="https://www.saudemelhor.com/wp-content/uploads/2017/01/frutas-diabetes.jpg" width="100%" height="350" /></li>
+                    <li><img alt="" class="img-responsive" src="https://www.saudedia.com.br/wp-content/uploads/2019/02/lanches-saudaveis-que-ajudam-a-perder-peso.jpg" width="100%" height="350" /></li>
+                    <li><img alt="" class="img-responsive" src="https://www.colombo.com.br/blog/wp-content/uploads/2015/09/destacada.gif" width="100%" height="350" /></li>
 
                     </div>
                   </ul>
@@ -204,10 +196,14 @@ function myFunction() {
 
             <div class="col-lg-6 ">
               <div class="company mar-left10">
-                <h4>Nosso projeto foi criado em 2019 para pessoas que querem ser mais <span>saudaveis </span>.</h4>
-                <p>Fornecemos suporte para pessoas que querem mudar de vida,
-                 fazendo mais exercicios e tendo uma alimentação mais balanceada
-                  .</p>
+                <h4>Nosso projeto foi criado em 2019 com intuito de melhorar a qualidade de vida das pessoas.</h4>
+                <p> Que a tecnologia facilita a realização de diversas tarefas é inegável,
+                 hoje em dia podemos pagar contas, fazer compras e até controlar algumas áreas da casa
+                  com apenas um clique, mas você já parou para pensar que ela não pode facilitar tudo? 
+                  Praticar exercícios é algo que um celular não pode fazer por nós, então, pensando nisso
+                   a Corpo em Movimento resolveu unir tecnologia e bem-estar para trazer a seus usuários
+                    facilidade e qualidade de vida!
+                  </p>
               </div>
               <div class="list-style">
                 <div class="row">
@@ -227,7 +223,7 @@ function myFunction() {
   <!--/about-->
 
   <!-- spacer section:testimonial -->
-  <section id="testimonials-3" class="section" data-stellar-background-ratio="0.5">
+  <section id="parallax1" class="section" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -252,9 +248,9 @@ function myFunction() {
   </section>
 
   <!-- services -->
-  <section id="services" class="section pad-bot5 bg-white">
+  <section id="services" class="section  bg-white">
     <div class="container">
-      <div class="row mar-bot5">
+      <div class="row ">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
             <div class="wow bounceIn" data-animation-delay="7.8s">
@@ -266,7 +262,7 @@ function myFunction() {
           </div>
         </div>
       </div>
-      <div class="row mar-bot40">
+      <div class="row">
         <div class="col-lg-4">
           <div class="wow bounceIn">
             <div class="align-center">
@@ -322,7 +318,7 @@ function myFunction() {
   <!--/services-->
 
   <!-- spacer section:testimonial -->
-  <section id="testimonials" class="section" data-stellar-background-ratio="0.5">
+  <section id="testimonials-3" class="section" data-stellar-background-ratio="0.5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -331,7 +327,7 @@ function myFunction() {
               <h5 style="text-shadow: 10px 6px 6px #333; color:#ffffff;">
               O maior erro que um homem pode cometer é sacrificar a sua saúde a qualquer outra vantagem.
               </h5>
-              <br />
+              <br/>
               <span class="author" style="text-shadow: 10px 6px 6px #333; color:#ffffff;">&mdash; Arthur Schopenhauer</span>
             </div>
 
@@ -344,13 +340,13 @@ function myFunction() {
   </section>
 
   <!-- team -->
-  <section id="team" class="team-section appear clearfix">
+  <section id="team" class="team-section">
     <div class="container">
 
       <div class="row mar-bot10">
         <div class="col-md-offset-3 col-md-6">
           <div class="section-header">
-            <div class="wow bounceIn">
+            <div class="bounceIn">
 
               <h2 class="section-heading animated" data-animation="bounceInUp">Nossa equipe</h2>
               <p>Nossa equipe é formada pelos alunos de desenvolvimento da Fatec!</p>
@@ -360,7 +356,7 @@ function myFunction() {
         </div>
       </div>
 
-      <div class="row align-center mar-bot45">
+
         <div class="col-md-4">
           <div class="wow bounceIn" data-animation-delay="4.8s">
             <div class="team-member">
@@ -381,8 +377,8 @@ function myFunction() {
             </div>
           </div>
         </div>
-        <div class="col-md-4">
 
+        <div class="col-md-4">
           <div class="wow bounceIn">
             <div class="team-member">
               <div class="profile-picture">
@@ -402,6 +398,7 @@ function myFunction() {
             </div>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="wow bounceIn">
             <div class="team-member">
@@ -423,135 +420,11 @@ function myFunction() {
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
   <!-- /team -->
 
-  <!-- spacer section:stats -->
-  <section id="parallax1" class="section pad-top40 pad-bot40 mar-bot20" data-stellar-background-ratio="0.5">
-    <div class="container ">
-      <div class="align-center pad-top40 pad-bot40">
-        <h4 class="color-white pad-top50">A felicidade que você procurava!!</h4>
-        <p class="color-white">Nós da Corpo em Movimento junto de profissionais da área fizemos um levantamento e descobrimos que pessoas com estilos de vida saudavél são mais felizes! Sim, mais felizes, poís
-        isso não afeta apenas seu corpo, e sim seu estado por um completo, você terá um melhor aproventamento do seu dia, mais energia nas suas tarefas e claro, uma auto estima melhor, não perca tempo
-        se junte a nós nessa caminhada.</p>
-      </div>
-    </div>
-  </section>
- 
-
-  
-
-  <!-- section works -->
-  <section id="section-works" class="section appear clearfix">
-    <div class="container">
-
-      <div class="row mar-bot40">
-        <div class="col-md-offset-3 col-md-6">
-          <div class="section-header">
-            <h2 class="section-heading animated" data-animation="bounceInUp">Portfolio</h2>
-            <p>O que nosso projeto vai lhe Proporciona.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <nav id="filter" class="col-md-12 text-center">
-          <ul>
-            <li><a href="#" class="current btn-theme btn-small" data-filter="*">Todas</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".webdesign">Vida</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".photography">Trabalho</a></li>
-            <li><a href="#" class="btn-theme btn-small" data-filter=".print">Liberdade</a></li>
-          </ul>
-        </nav>
-        <div class="col-md-12">
-          <div class="row">
-            <div class="portfolio-items isotopeWrapper clearfix" id="3">
-
-              <article class="col-md-4 isotopeItem webdesign">
-                <div class="portfolio-item">
-                  <div class="wow rotateInUpLeft" data-animation-delay="4.8s">
-                    <img src="img/portfolio/1.jpg" alt="welcome" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Ligação com sua familia</a></h5>
-                      <a href="img/portfolio/1.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem photography">
-                <div class="portfolio-item">
-                  <div class="wow bounceIn">
-                    <img src="img/portfolio/2.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Mais vontade</a></h5>
-                      <a href="img/portfolio/2.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem print">
-                <div class="portfolio-item">
-                  <div class="wow rotateInUpLeft">
-                    <img src="img/portfolio/4.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Esportes</a></h5>
-                      <a href="img/portfolio/4.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem webdesign">
-                <div class="portfolio-item">
-                  <div class="wow rotateInDownRight">
-                    <img src="img/portfolio/6.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Saúde</a></h5>
-                      <a href="img/portfolio/6.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4 isotopeItem photography">
-                <div class="portfolio-item">
-                  <div class="wow bounceIn">
-                    <img src="img/portfolio/8.jpg" alt="" />
-                  </div>
-                  <div class="portfolio-desc align-center">
-                    <div class="folio-info">
-                      <h5><a href="#">Desempenho</a></h5>
-                      <a href="img/portfolio/8.jpg" class="fancybox"><i class="fa fa-external-link fa-2x"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-            </div>
-
-          </div>
-
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <!--  -->
   <a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
 
   <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>

@@ -9,12 +9,19 @@ if(!$_SESSION['logado'] && !(isset($_SESSION['user']) && !empty($_SESSION['user'
 header("location:index.php");
 }
 $id = $_SESSION['id'];
+
 $barrar = sprintf("SELECT id_usuario  FROM formcorp WHERE id_usuario=$id");
 $dados = mysqli_query( $conexao,$barrar) or die(mysqli_error());
 $num = mysqli_fetch_array($dados,MYSQLI_NUM)[0];
 if ($num != 1){
 echo '<script> window.location.replace("FormCorp.php"); </script>';
 }
+$barrar = sprintf("SELECT id_usuario FROM formcorp WHERE id_usuario=$id");
+$dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
+                       $num = mysqli_fetch_array($dados,MYSQLI_NUM)[0];
+                                      if ($num != $id){
+                                      echo '<script> window.location.replace("FormCorp.php"); </script>';
+                                      }
 ?>
   <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
@@ -45,8 +52,6 @@ echo '<script> window.location.replace("FormCorp.php"); </script>';
               <div class="row"> 
                   <div class="col-lg-9 main-chart">
                       <?php
-                       
-
                       $query = sprintf("SELECT id_exercicio, Datas FROM lista_exercicios WHERE id_usuario=$id order by id_exercicio");
                       $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
                      
@@ -74,9 +79,6 @@ echo '<script> window.location.replace("FormCorp.php"); </script>';
                       $linha2 = mysqli_fetch_assoc($dados2);
                        // calcula quantos dados retornaram
                        $total2 = mysqli_num_rows($dados2);
-                      
-                      
-
 
 
                       $id_exercicio=$linha['id_exercicio'];
@@ -118,156 +120,61 @@ echo '<script> window.location.replace("FormCorp.php"); </script>';
      <button class="contact3-form-btn"  >Atualizar Exercícios &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
       </a> -->
       <a>
-     <button class="contact3-form-btn" onclick="attdieta();"S>Atualizar Exercícios &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
+     <button class="contact3-form-btn" onclick="attdieta();">Atualizar Exercícios &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
 </a>
+<div class="centralizar">
+<table class="table bg-success">
+  <thead>
+    <tr >
+      <th  scope="col">#</th>
+      <th class="centralizar" scope="col">Dia</th>
+      <th class="centralizar" scope="col">Nome</th>
+      <th class="centralizar" scope="col">Quantidade</th>
+      <th class="centralizar" scope="col">Musculo Alvo</th>
+      <th class="centralizar" scope="col">Alvo</th>
+      <th class="centralizar" scope="col">Demonstração</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <?php
+    $e = 1;
+                                                
+    do {
+    if ($linha['id_exercicio']==$linha2['ID']) {
+    ?>                                                
+  
+      <th scope="row"><?=$e?></th>
+      <td><?php
+      if($e < 2){echo "Segunda-Feira";}
+      if($e >2 && $e < 4){echo "Terça-Feira";}
+      if($e >4 && $e < 6){echo "Quarta-Feira";}
+      if($e >6 && $e < 8){echo "Quinta-Feira";}
+      if($e > 8 && $e < 10 ){echo "Sexta-Feira";}
+      ?>
+      </td>
+      <td><?=utf8_encode($linha2['Nome'])?></td>
+      <td><?=$linha2['Quantidade']?></td>
+      <td><?=$linha2['MuscAlvo']?></td>
+      <td><?=$linha2['tipo_exercicio']?></td>
+      <td><a class="oioi" href="<?=$linha2['Link']?>" target="_blank">
+      <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
+      </tr>
+  </tbody>
 
-                              <div class="container-table100">   
-                                  <div class="wrap-table100">
-                                      <div class="table100 ver1 m-b-110">
-                                          <div class="table100-head">
-                                              <table>
-                                                  <thead>
-                                                      <tr class="row100 head">
-                                                          <th class="cell100 column1">Dia</th>
-                                                          <th class="cell100 column2">Nome</th>
-                                                          <th class="cell100 column4">Quantidade</th>
-                                                          <th class="cell100 column5">Musculo Alvo</th>
-                                                          <th class="cell100 column6"> Algvo</th>
-                                                          <th class="cell100 column7">Demonstração</th>
-
-                                                         
-                                                      </tr>
-                                                  </thead>
-                                              </table>
-                                          </div> 
-                                          
-                                          <?php
-                                                      $i = -1;
-                                                      $e = 1;
-                                                      if($QuantExcerc > 0) {
-                                                      $i++;
-                                                      
-                                                      do {
-                                                 if ($linha['id_exercicio']==$linha2['ID']) {
-                                              ?>                                                         
-                                                    <div class="table100-body js-pscroll">
-                                                    <table>
-                                                    <tbody>
-                                                      <tr class="row100 body">
-                                                          <td class="cell100 column1"><?php 
-                                                          if($e < 2){echo "Segunda-Feira";}
-                                                          if($e >2 && $e < 4){echo "Terça-Feira";}
-                                                          if($e >4 && $e < 6){echo "Quarta-Feira";}
-                                                          if($e >6 && $e < 8){echo "Quinta-Feira";}
-                                                          if($e > 8 && $e < 10 ){echo "Sexta-Feira";}
-                                                          // if($i <2 && $i > 2){echo "Sabádo";}
-                                                          // if($i <2 && $i > 2){echo "Domingo";}
-
-                                                          ?></td>
-                                                          <?php
-                                                          if($e < 2){echo "<br>";}
-                                                          if($e >2 && $e < 4){echo "<br>";}
-                                                          if($e >4 && $e < 6){echo "<br>";}
-                                                          if($e >6 && $e < 8){echo "<br>";}
-                                                          if($e > 8 && $e < 10 ){echo "<br>";}
-                                                          ?>
-                                                          <td class="cell100 column2"><?=utf8_encode($linha2['Nome'])?></td>
-                                                          <td class="cell100 column4"><?=$linha2['Quantidade']?></td>
-                                                          <td class="cell100 column5"><?=$linha2['MuscAlvo']?></td>
-                                                          <td class="cell100 column6"><?=$linha2['tipo_exercicio']?></td>
-                                                          <td class="cell100 column7"> <a class="oioi" href="<?=$linha2['Link']?>" target="_blank">  &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-youtube-play" aria-hidden="true"></i></td>
-                                                         </tr>
-                                                  </tbody>
-                                              </table>
-                                          </div>
-                                          <?php 
-                                    $linha = mysqli_fetch_assoc($dados);
-                                           }else {
-                                             $e--;
-                                           }
-                                      
-                      // finaliza o loop que vai mostrar os dados
-                                $i++;         $e++;
-                      }while($linha2 = mysqli_fetch_assoc($dados2));
-                      }
-                      
-                      mysqli_free_result($dados);
-                      mysqli_free_result($dados2);
+<?php 
+                    $linha = mysqli_fetch_assoc($dados);
+                    }else{
+                    $e--;
+                    }
+                    $e++;
+                    }while($linha2 = mysqli_fetch_assoc($dados2));
+                    
+                    mysqli_free_result($dados);
+                    mysqli_free_result($dados2);
                       ?>
-                      
-                                      </div>
-                                  </div>
-                              </div>
-          <?php
-          if ($dieta=='sim') {
-              ?>
-             
-                              
-     <h3><font color="green"><?=$datas3?> &nbsp;&nbsp; &nbsp;&nbsp;<?=$datas4?></font></h3>
-   <!--  <a href="SalvarBD/Alimentos.php?codigo=<?=$AlterarManual3?>">
-    <button class="contact3-form-btn">Atualizar Dieta &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
-   </a> --> 
-<a>
-     <button class="contact3-form-btn" onclick="attexerc();"S>Atualizar Dieta &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
-</a>
-
-                              <div class="container-table100">   
-                                  <div class="wrap-table100">
-                                      <div class="table100 ver1 m-b-110">
-                                          <div class="table100-head">
-                                              <table>
-                                                  <thead>
-                                                      <tr class="row100 head">
-                                                          <th class="cell100 column1">Período</th>
-                                                          <th class="cell100 column2">Refeição</th> 
-                                                          <th class="cell100 column7">Trocar</th>
-                                                      </tr>
-                                                  </thead>
-                                              </table>
-                                          </div>
-                                          <?php
-                                          $r=1;
-                                                      $i3 = -1;
-                                                      if($total3 > 0) {
-                                                      $i3++;
-                                                      do {
-                                                 if ($linha3['id_alimento']==$linha4['ID']) {
-                                              ?>                             
-                                          <div class="table100-body js-pscroll">
-                                              <table>
-                                                  <tbody>
-                                                      <tr class="row100 body">
-                                                      <td class="cell100 column1"><?php 
-                                                          if($r < 2){echo "Café da manhã";}
-                                                          if($r >2 && $r < 4){echo "Almoço";}
-                                                          if($r >4 && $r < 6){echo "Jantar";}
-                                                          if($r >6 && $r < 8){echo "Extra";}
-                                                         
-                                                          ?></td>
-                                                          <td class="cell100 column2"><?=utf8_encode($linha4['NomeAlimento'])?></td>
-                                                          <td class="cell100 column7"><?=$linha4['tipo_alimento']?></i></td>
-                                                         </tr>
-                                                  </tbody>
-                                              </table>
-                                          </div>
-                                          <?php 
-                                    $linha3 = mysqli_fetch_assoc($dados3);
-                                         }else {
-                                          $r--;
-                                        }
-                                   
-                      // finaliza o loop que vai mostrar os dados
-                                $i3++;    $r++;     
-                      }while($linha4 = mysqli_fetch_assoc($dados4));
-                      }
-                      mysqli_free_result($dados3);
-                      mysqli_free_result($dados4);
-                      ?>
-                                      </div>
-                                  </div>
-                              </div>
-                              <?php }
-          ?> </div>
+</table> </div>
+</div>
                           
                      </div>
                      
