@@ -118,7 +118,8 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
      <button class="contact3-form-btn" onclick="attdieta();"S>Atualizar Exercícios &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
 </a>
 
-                              <div class="container-table100">   
+
+                              <div class=" col-md-12 container-table100">   
                                   <div class="wrap-table100">
                                       <div class="table100 ver1 m-b-110">
                                           <div class="table100-head">
@@ -293,7 +294,6 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
       <ul class="resultado">
 </ul>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-<script type="text/javascript" src="personalizadoaula.js"></script>
 <br>
 
 <style>.swal2-popup {
