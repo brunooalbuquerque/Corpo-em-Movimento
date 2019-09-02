@@ -147,14 +147,12 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
       if($e >4 && $e < 6){echo "Quarta-Feira";}
       if($e >6 && $e < 8){echo "Quinta-Feira";}
       if($e > 8 && $e < 10 ){echo "Sexta-Feira";}
-      // if($i <2 && $i > 2){echo "Sabádo";}
-      // if($i <2 && $i > 2){echo "Domingo";}
-    ?></td>
+      ?>
+      </td>
       <td><?=utf8_encode($linha2['Nome'])?></td>
       <td><?=$linha2['Quantidade']?></td>
       <td><?=$linha2['MuscAlvo']?></td>
       <td><?=$linha2['tipo_exercicio']?></td>
-
       <td><a class="oioi" href="<?=$linha2['Link']?>" target="_blank">
       <i class="fa fa-youtube-play" aria-hidden="true"></i></td>
       </tr>
@@ -169,7 +167,6 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
                     $e++;
                     }while($linha2 = mysqli_fetch_assoc($dados2));
                     }
-                      
                     mysqli_free_result($dados);
                     mysqli_free_result($dados2);
                       ?>
