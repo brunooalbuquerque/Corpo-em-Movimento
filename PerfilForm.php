@@ -91,8 +91,8 @@ input::-webkit-inner-spin-button {
             <div class="select_arrow">
             </div>
                     </div>
-                              </div>
-                          </div>
+                       </div>
+                        </div>
                        
                    
                 
@@ -101,10 +101,9 @@ input::-webkit-inner-spin-button {
 							<div class="control-group">
 									
 									<label class="control control-checkbox">
-									<font color="Black">	Deseja uma dieta?</font>
+									<font color="Black">Deseja uma dieta?</font>
 										<input type="hidden" name="dieta" value="nao"/>
 											<input type="checkbox" name="dieta" value="sim" <?php if($linha['dieta'] == 'sim'){ echo "checked"; } ?>/>
-											
 										<div class="control_indicator"></div>
 									</label>
 								</div>

@@ -74,9 +74,6 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
                       $linha2 = mysqli_fetch_assoc($dados2);
                        // calcula quantos dados retornaram
                        $total2 = mysqli_num_rows($dados2);
-                      
-                      
-
 
 
                       $id_exercicio=$linha['id_exercicio'];
