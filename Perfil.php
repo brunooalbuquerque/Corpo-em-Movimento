@@ -26,10 +26,7 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
   <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
   <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
+
         <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" ></div>
@@ -39,94 +36,81 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
             <!--logo end-->
         </header>
 
-      <?php
-        $page="perfil";
-       include "includes/sidebar.php" 
-      
-       ?>
+        <?php
+$page="perfil";
+include "includes/sidebar.php";
+
+          $query = sprintf("SELECT id_exercicio, Datas FROM lista_exercicios WHERE id_usuario=$id
+           order by id_exercicio");
+          $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
+          
+          $linha = mysqli_fetch_assoc($dados);
+          $QuantExcerc = mysqli_num_rows($dados);
+
+          //redireciona para sortear caso usuario não tenha exercicios ainda
+        if ($QuantExcerc<10) {
+        echo '<script> window.location.replace("SalvarBD/Exercicios.php"); </script>';
+        }
+
+          $datas1 = date('d-m-Y', strtotime($linha['Datas']));
+          $datas2 = date('d-m-Y', strtotime('+30 days',strtotime($datas1)));
+          $data1 = new DateTime( $datas1 );
+          $data2 = new DateTime( $datas2 );
+          $diasfalta = $data1->diff( $data2 );
+
+          $query2 = sprintf("SELECT ID, Nome, Quantidade, MuscAlvo,tipo_exercicio, Link FROM exercicios ");
+          // executa a query
+          
+          $dados2 = mysqli_query( $conexao,$query2) or die(mysqli_error());
+          // transforma os dados em um array
+          $linha2 = mysqli_fetch_assoc($dados2);
+            // calcula quantos dados retornaram
+            $total2 = mysqli_num_rows($dados2);
+
+
+          $id_exercicio=$linha['id_exercicio'];
+          $AlterarManual=1;
+
+          $query3 = sprintf("SELECT id_alimento, Datas FROM Dieta WHERE id_usuario=$id order by ID");
+          // executa a query
+
+          $dados3 = mysqli_query( $conexao,$query3) or die(mysqli_error());
+          // transforma os dados em um array
+          $linha3 = mysqli_fetch_assoc($dados3);
+
+          $datas3 = date('d-m-Y', strtotime($linha3['Datas']));
+          $datas4 = date('d-m-Y', strtotime('+30 days',strtotime($datas3)));
+
+          $query4 = sprintf("SELECT ID, NomeAlimento, tipo_alimento FROM alimentos ");
+          // executa a query
+          
+          $dados4 = mysqli_query( $conexao,$query4) or die(mysqli_error());
+          // transforma os dados em um array
+          $linha4 = mysqli_fetch_assoc($dados4);
+            // calcula quantos dados retornaram
+            $total4 = mysqli_num_rows($dados4);
+          
+          // calcula quantos dados retornaram
+          $total3 = mysqli_num_rows($dados3);
+          $id_alimento=$linha3['id_alimento'];
+          $AlterarManual3=1;  
+          ?>
 
 
       <section id="main-content">
-          <section class="wrapper">
-
+          <section class="wrapper centralizar">
               <div class="row"> 
                   <div class="col-lg-9 main-chart">
-                      <?php
-                      $query = sprintf("SELECT id_exercicio, Datas FROM lista_exercicios WHERE id_usuario=$id order by id_exercicio");
-                      $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
-                     
-                      $linha = mysqli_fetch_assoc($dados);
-                      $QuantExcerc = mysqli_num_rows($dados);
-
-                      //redireciona para sortear caso usuario não tenha exercicios ainda
-                    if ($QuantExcerc<10) {
-                    echo '<script> window.location.replace("SalvarBD/Exercicios.php"); </script>';
-                    }
-
-
-
-                      $datas1 = date('d-m-Y', strtotime($linha['Datas']));
-                      $datas2 = date('d-m-Y', strtotime('+30 days',strtotime($datas1)));
-                      $data1 = new DateTime( $datas1 );
-                        $data2 = new DateTime( $datas2 );
-                        $diasfalta = $data1->diff( $data2 );
-
-                      $query2 = sprintf("SELECT ID, Nome, Quantidade, MuscAlvo,tipo_exercicio, Link FROM exercicios ");
-                      // executa a query
-                      
-                      $dados2 = mysqli_query( $conexao,$query2) or die(mysqli_error());
-                      // transforma os dados em um array
-                      $linha2 = mysqli_fetch_assoc($dados2);
-                       // calcula quantos dados retornaram
-                       $total2 = mysqli_num_rows($dados2);
-
-
-                      $id_exercicio=$linha['id_exercicio'];
-                      $AlterarManual=1;
-
-
-                      $query3 = sprintf("SELECT id_alimento, Datas FROM Dieta WHERE id_usuario=$id order by ID");
-                      // executa a query
-
-                      $dados3 = mysqli_query( $conexao,$query3) or die(mysqli_error());
-                      // transforma os dados em um array
-                      $linha3 = mysqli_fetch_assoc($dados3);
-                     
-
-                      $datas3 = date('d-m-Y', strtotime($linha3['Datas']));
-                      $datas4 = date('d-m-Y', strtotime('+30 days',strtotime($datas3)));
-
-                      $query4 = sprintf("SELECT ID, NomeAlimento, tipo_alimento FROM alimentos ");
-                      // executa a query
-                      
-                      $dados4 = mysqli_query( $conexao,$query4) or die(mysqli_error());
-                      // transforma os dados em um array
-                      $linha4 = mysqli_fetch_assoc($dados4);
-                       // calcula quantos dados retornaram
-                       $total4 = mysqli_num_rows($dados4);
-                      
-
-                      // calcula quantos dados retornaram
-                      $total3 = mysqli_num_rows($dados3);
-                      $id_alimento=$linha3['id_alimento'];
-                      $AlterarManual3=1;
-                      
-                      ?>
-                   
-                      <div class="limiter col-md-12">
                      
      <h3><font color="green"><?=$datas1?> &nbsp;&nbsp; &nbsp;&nbsp;<?=$datas2?></font></h3>
-    <!-- <a href="SalvarBD/Aleatorio.php?codigo=<?=$AlterarManual?>">
-     <button class="contact3-form-btn"  >Atualizar Exercícios &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
-      </a> -->
-      <a>
-     <button class="contact3-form-btn" onclick="attdieta();">Atualizar Exercícios &nbsp;&nbsp; <i class="fa fa-refresh" aria-hidden="true"></i></button>
-</a>
-<div class="centralizar">
+
+      <a><button class="contact3-form-btn" onclick="attdieta();">Atualizar Exercícios &nbsp;&nbsp;
+       <i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+
 <table class="table bg-success">
-  <thead>
-    <tr >
-      <th  scope="col">#</th>
+    <thead class="bg-dark">
+    <tr>
+      <th scope="col">#</th>
       <th class="centralizar" scope="col">Dia</th>
       <th class="centralizar" scope="col">Nome</th>
       <th class="centralizar" scope="col">Quantidade</th>
@@ -134,12 +118,12 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
       <th class="centralizar" scope="col">Alvo</th>
       <th class="centralizar" scope="col">Demonstração</th>
     </tr>
-  </thead>
+    </thead>
   <tbody>
     <tr>
+
   <?php
-    $e = 1;
-                                                
+    $e = 1;                                             
     do {
     if ($linha['id_exercicio']==$linha2['ID']) {
     ?>                                                
@@ -173,26 +157,25 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
                     mysqli_free_result($dados);
                     mysqli_free_result($dados2);
                       ?>
-</table> </div>
-</div>
-                          
-                     </div>
+</table> 
+</div>  
                      
                   <div class="col-lg-3 ds">
                     
                         <!-- CALENDAR-->
-                        <div id="calendar" class="mb">
-                            <div class="panel green-panel no-margin">
-                                <div class="panel-body">
-                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                        <div class="arrow"></div>
-                                        <h3 class="popover-title" style="disadding: none;"></h3>
-                                        <div id="date-popover-content" class="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div><!-- / calendar -->
+<div id="calendar" class="mb">
+    <div class="panel green-panel no-margin">
+        <div class="panel-body">
+            <div id="date-popover" class="popover top" style="cursor: pointer; disadding: 
+            block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                <div class="arrow"></div>
+                <h3 class="popover-title" style="disadding: none;"></h3>
+                <div id="date-popover-content" class="popover-content"></div>
+            </div>
+            <div id="my-calendar"></div>
+        </div>
+    </div>
+</div><!-- / calendar -->
                       
                   </div><!-- /col-lg-3 -->
               </div> 
@@ -200,10 +183,8 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
           </section>
       </section>
 
-      <ul class="resultado">
-</ul>
+  
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-<script type="text/javascript" src="personalizadoaula.js"></script>
 <br>
 
 <style>.swal2-popup {
