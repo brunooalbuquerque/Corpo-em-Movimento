@@ -133,8 +133,9 @@ include "includes/sidebar.php";
       </td>
       <td><?=utf8_encode($linha2['Nome'])?></td>
       <td><?=$linha2['Quantidade']?></td>
-      <td><?=$linha2['MuscAlvo']?></td>
       <td><?=$linha2['tipo_exercicio']?></td>
+      <td><a><button class="oioi" onclick="attoneexerc();">
+      <i class="fa fa-youtube-play " aria-hidden="true"></button></a></i></td>
       <td><a class="oioi" href="<?=$linha2['Link']?>" target="_blank">
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>
@@ -236,7 +237,20 @@ include "includes/sidebar.php";
 	<script src="assets/js/zabuto_calendar.js"></script>	
 	
     <script type="text/javascript">
-  
+    function attoneexerc() { 
+  Swal.fire({
+  position: 'center',
+  type: 'success',
+  title: 'Exercício alterado com sucesso!',
+  showConfirmButton: false,
+  timer: 1200,
+  onClose(){
+ window.location.replace("Perfil.php");
+}
+})
+}
+
+
   function attdieta() { 
   Swal.fire({
   type: 'question',

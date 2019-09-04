@@ -28,7 +28,7 @@ if($IMC>=18.5 && $IMC <=24.9){
     $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
   $id_exercicio = mysqli_fetch_assoc($dados);
   }  
-//seleciona a data para ver no banco se ja tenhe exercicios para esse usuario e o ID para substituir caso ja tenha exercicios
+//seleciona a data para ver no banco se ja tem exercicios para esse usuario e o ID para substituir caso ja tenha exercicios
  $query1 = sprintf("SELECT ID, Datas FROM lista_exercicios WHERE id_usuario=$id_usuario");
  $dados1 = mysqli_query( $conexao,$query1) or die(mysqli_error());
  $IdDatas = mysqli_fetch_assoc($dados1);
