@@ -61,27 +61,19 @@ header("location:index.php");
 					<input class="input100" type="text" name="peso" id="peso" maxlength="5" pattern=".{4,5}" required title="Exemplo: xx.x" placeholder="Peso" onKeyUp="maskIt(this,event,'####.#',true)" required>
 					<span class="focus-input100"></span>
 				</div>
+
+				<label class="label-input100" for="first-name">Quais dias deseja fazer Exercicios? *</label>
+
+
+
+
+
 				<label class="label-input100" >Qual sua Idade? *</label>
 				<div class="wrap-input100 validate-input" >
 					<input  id="Idade" class="input100" type="number" onKeyPress="if(this.value.length==3) return false;" name="idade" id="idade"  placeholder="Digite sua Idade" required>
 					<span class="focus-input100"></span>
 				</div>
-				
-                
-				<label class="label-input100" for="first-name">Você deseja uma dieta? *</label>
 
-				<div class="control-group">
-					<label class="control control-radio">
-						Sim
-						<input value="sim" type="radio" name="dieta" checked />
-						<div class="control_indicator"></div>
-					</label>
-					<label class="control control-radio">
-						Não
-						<input value="nao" type="radio" name="dieta" />
-						<div class="control_indicator"></div>
-					</label>
-				</div>
 				<div class="select">
 						<select name="genero" required>
 							<option selected disabled value="">Gênero</option>

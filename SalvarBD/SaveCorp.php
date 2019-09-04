@@ -2,7 +2,7 @@
 session_start();
 include "../includes/conexao.php";
 
-    $dietaVal = $_POST["dieta"];
+    echo $dias = $_POST["framework"];
     $generoVal = $_POST["genero"];
     $altura = $_POST["altura"];
     $peso= $_POST ["peso"];
@@ -25,12 +25,12 @@ include "../includes/conexao.php";
      
    }else{
         $query2 = mysqli_query($conexao, "INSERT INTO formcorp (
-                     id_usuario, altura, peso, idade, dieta, genero, imc) 
-                     VALUES('$id', '$altura', '$peso','$idade', '$dietaVal', '$generoVal', '$imc')");
+                     id_usuario, altura, peso, idade, genero, imc) 
+                     VALUES('$id', '$altura', '$peso','$idade', '$generoVal', '$imc')");
 
                      $_SESSION['logado']=TRUE;
                    
-                    header("location:Exercicios.php");
+                  header("location:Exercicios.php");
                    }
 
 ?>
