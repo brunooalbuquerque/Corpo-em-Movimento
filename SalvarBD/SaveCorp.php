@@ -2,7 +2,6 @@
 session_start();
 include "../includes/conexao.php";
 
-    echo $dias = $_POST["framework"];
     $generoVal = $_POST["genero"];
     $altura = $_POST["altura"];
     $peso= $_POST ["peso"];
