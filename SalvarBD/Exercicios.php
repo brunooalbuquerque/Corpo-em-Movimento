@@ -34,11 +34,7 @@ if($IMC>=18.5 && $IMC <=24.9){
  $IdDatas = mysqli_fetch_assoc($dados1);
  $id=$IdDatas['ID'];
 
- //ve se o usuario quer dieta
- $query5 = sprintf("SELECT dieta FROM formcorp WHERE id_usuario=$id_usuario");
- $dados5 = mysqli_query( $conexao,$query5) or die(mysqli_error());
- $Dieta = mysqli_fetch_assoc($dados5);
- $Dieta=$Dieta['dieta'];
+
 
 //insere no banco caso o usuario n tenha exercicios ainda
   if (is_null($IdDatas['Datas'])) { 
@@ -49,11 +45,9 @@ VALUES('$id_usuario', '$id_exercicios','$data')");
  
         }while($id_exercicio = mysqli_fetch_assoc($dados));   
       mysqli_free_result($dados); 
-      if ($dieta=='sim' ) {
-        header("location:Dieta.php");
-    }else {
+
         header("location:../Perfil.php");
-    }
+    
 }else {
 
 
@@ -67,13 +61,7 @@ $id++;
         }while($id_exercicio = mysqli_fetch_assoc($dados));   
 mysqli_free_result($dados); 		
 }
-if ($Alterar==1) {
-    header("location:Dieta.php");
-}else {
+
+
    header("location:../Perfil.php");
-}
-
-
-
-
 ?>

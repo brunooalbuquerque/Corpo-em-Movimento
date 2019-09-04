@@ -29,7 +29,7 @@ header("location:index.php");
               <?php 
                $page="dados";
               include "includes/sidebar.php";
-                             $query = sprintf("SELECT altura, peso, idade, f_academia, dieta, genero,objetivo FROM formcorp WHERE id_usuario = '$id'");
+                             $query = sprintf("SELECT altura, peso, idade, genero FROM formcorp WHERE id_usuario = '$id'");
                              mysqli_select_db($conexao, $dbname);
                             // cria a instrução SQL que vai selecionar os dados
                       // executa a query
@@ -51,78 +51,60 @@ input::-webkit-inner-spin-button {
 
           	<div class="row mt">
                 <div class="col-lg-1 dsw">
-                    
-                   
-                      
-                  </div><!-- /col-lg-3 -->
-          	<div class="limiter col-md-9">
-                      <div class="row mt">
-          		<div class="col-lg-12">
-                  <div class="form-panel">
-                  	  <h4 class="mb"><i class="fa fa-angle-right"></i><font color="Green"> &nbsp;&nbsp;Formulário Corporal </font></h4>
-                      <form class="form-horizontal style-form" method="POST" action="SalvarBD/AltFormCorp.php?codigo=<?=$id?>">
-                      <div class="form-group">
-                              <label class="col-sm-1 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Altura</font></label>
-                              <div class="col-sm-10">
-                                  <input type="text"  name="altura" required class="form-control round-form" maxlength="4" pattern=".{4,4}" title="Exemplo: x.xx" onKeyUp="maskIt(this,event,'##.#',true)"  value =<?=number_format( (float) $linha['altura'],2, '.', '');?>>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-1 col-sm-2 control-label"><font color="Black">&nbsp;&nbsp; Peso</font></label>
-                              <div class="col-sm-10">
-                                  <input type="text" pattern=".{4,5}" required title="Exemplo: xx.x" name="peso" maxlength="5" class="form-control round-form" onKeyUp="maskIt(this,event,'####.#',true)" value ="<?=number_format( (float) $linha['peso'],1, '.', '');?>">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-sm-1 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Idade</font></label>
-                              <div class="col-sm-10">
-                                  <input type="number"  name="idade" onKeyPress="if(this.value.length==3) return false;" required class="form-control round-form" value =<?=$linha['idade']?>>
-                              </div>
-                          </div>
-                         
-                          <div class="form-group">
-                              <label class="col-sm-1 col-sm-2 control-label"><font color="Black">&nbsp;&nbsp; Gênero</font></label>
-                              <div class="col-sm-10">
-                                  <div class="select">
+      
+    </div><!-- /col-lg-3 -->
+<div class="limiter col-md-9">
+        <div class="row mt">
+<div class="col-lg-12">
+    <div class="form-panel">
+        <h4 class="mb"><i class="fa fa-angle-right"></i><font color="Green"> &nbsp;&nbsp;Formulário Corporal </font></h4>
+        <form class="form-horizontal style-form" method="POST" action="SalvarBD/AltFormCorp.php?codigo=<?=$id?>">
+        <div class="form-group">
+                <label class="col-sm-1 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Altura</font></label>
+                <div class="col-sm-10">
+                    <input type="text"  name="altura" required class="form-control round-form" maxlength="4" pattern=".{4,4}" title="Exemplo: x.xx" onKeyUp="maskIt(this,event,'##.#',true)"  value =<?=number_format( (float) $linha['altura'],2, '.', '');?>>
+                </div>
+            </div>
+            <div class="form-group">
+    <label class="col-sm-1 col-sm-2 control-label"><font color="Black">&nbsp;&nbsp; Peso</font></label>
+    <div class="col-sm-10">
+        <input type="text" pattern=".{4,5}" required title="Exemplo: xx.x" name="peso" maxlength="5" class="form-control round-form" onKeyUp="maskIt(this,event,'####.#',true)" value ="<?=number_format( (float) $linha['peso'],1, '.', '');?>">
+    </div>
+            </div>
+    <div class="form-group">
+        <label class="col-sm-1 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Idade</font></label>
+        <div class="col-sm-10">
+            <input type="number"  name="idade" onKeyPress="if(this.value.length==3) return false;" required class="form-control round-form" value =<?=$linha['idade']?>>
+        </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-1 col-sm-2 control-label"><font color="Black">&nbsp;&nbsp; Gênero</font></label>
+                <div class="col-sm-10">
+                    <div class="select">
             <select name="genero">
-              <option value="masculino"<?php echo $linha['genero']=='masculino'?'selected':'';?>> Masculino</option>
-              <option value="feminino"<?php echo $linha['genero']=='feminino'?'selected':'';?>> Feminino</option>
+<option value="masculino"<?php echo $linha['genero']=='masculino'?'selected':'';?>> Masculino</option>
+<option value="feminino"<?php echo $linha['genero']=='feminino'?'selected':'';?>> Feminino</option>
             </select>
             <div class="select_arrow">
             </div>
+                </div>
                     </div>
-                       </div>
                         </div>
-                       
-                   
-                
-                   
-                            <div class="wrap-contact3-form-radio">
-							<div class="control-group">
-									
-									<label class="control control-checkbox">
-									<font color="Black">Deseja uma dieta?</font>
-										<input type="hidden" name="dieta" value="nao"/>
-											<input type="checkbox" name="dieta" value="sim" <?php if($linha['dieta'] == 'sim'){ echo "checked"; } ?>/>
-										<div class="control_indicator"></div>
-									</label>
-								</div>
-							</div>
-                                       <button type="submit" class="btn btn-theme">Alterar</button>
+                        <button type="submit" class="btn btn-theme">Alterar</button>
+          			            </div>
+                            </form>
+                        </div>
           			</div>
-                          
-                      </form>
-                  </div>
-          			</div>
-
           		</div>
-                 
-
           	</div><!-- /row -->
-          	
-          	
 		</section><!-- /wrapper -->
       </section><!-- /MAIN CONTENT -->
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
       <!--main content end-->
@@ -170,20 +152,7 @@ input::-webkit-inner-spin-button {
 	<script src="assets/js/form-component.js"></script>    
     
     
-  <script>
-      $('dieta').change(function(){
-    if($(this).is(":checked")) {
-        document.getElementById("dieta").value = "sim";
-    } else {
-        document.getElementById("dieta").value = "nao";
-    }
-});
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
-
-  </script>
 
 <script type="text/javascript">
 function maskIt(w,e,m,r,a){

@@ -9,14 +9,12 @@ session_start();
 include "includes/conexao.php";
 if(!$_SESSION['logado'] && !(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 header("location:index.php");
-} else{
-
-}  ?>
+}
+?>
   <body>
   
 
   <section id="container" >
-
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" ></div>
@@ -32,7 +30,7 @@ header("location:index.php");
         <?php
         $id=$_SESSION['id'];
                        $idzao = $_SESSION['id'];
-                             $query = sprintf("SELECT altura, peso, idade, f_academia, dieta, genero,objetivo FROM formcorp WHERE id_usuario = '$id'");
+                             $query = sprintf("SELECT altura, peso, idade, genero FROM formcorp WHERE id_usuario = '$id'");
                              mysqli_select_db($conexao, $dbname);
                              
                       $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
@@ -131,13 +129,13 @@ echo utf8_encode($dica);
                 <div class="white-panel pn">
 								<div class="white-header">
 									<h5>TABELA IMC</h5>
-								</div><img src="https://calculadoraonline.net.br/wp-content/uploads/2019/02/tabela-de-imc-1.png" alt="some text" height="185"> 
-									<div class="row">                      
-                                     </div>
-                        </div><!-- /col-md-4 -->
+								</div>
+  
+<img class="img-fluid" src="https://calculadoraonline.net.br/wp-content/uploads/2019/02/tabela-de-imc-1.png" alt="img imc">                    
+        </div><!-- /col-md-4 -->
           		<div class="col-lg-5"> 
-                  
-                      </div>	
+
+                </div>	
             </div>       
           </section>
       </section>
@@ -149,7 +147,6 @@ echo utf8_encode($dica);
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 <script type="text/javascript" src="personalizadoaula.js"></script>
 <br>
-
 
 <!--===============================================================================================-->	
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -197,10 +194,5 @@ echo utf8_encode($dica);
     
     <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
-
-    <!--script for this page-->
-  
-  
-
   </body>
 </html>

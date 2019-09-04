@@ -27,6 +27,12 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+  
 
 	
 <!--===============================================================================================-->
@@ -62,18 +68,58 @@ header("location:index.php");
 					<span class="focus-input100"></span>
 				</div>
 
-				<label class="label-input100" for="first-name">Quais dias deseja fazer Exercicios? *</label>
+	<div class="form-group wrap-input100">
+	<label class="label-input100" for="first-name">Quais dias deseja fazer Exercicios? *</label>
+<input type="hidden" name="funcao" id="funcao" value="funcao"/>
+<select name="dias[]" id="dias" class="form-control selectpicker" data-live-search="true" multiple required>
+      <option value="Segunda-Feira">Segunda-Feira</option>
+      <option value="Terça-Feira">Terça-Feira</option>
+      <option value="Quarta-Feira">Quarta-Feira</option>
+      <option value="Quinta-Feira">Quinta-Feira</option>
+      <option value="Sexta-Feira">Sexta-Feira</option>
+      <option value="Sábado">Sábado</option>
+      <option value="Domingo">Domingo</option>
+</select>
+</div>
 
 
+  <script>
+$(document).on('click', '#btSelecionar', function(event) {
+    event.preventDefault();
+    $("#funcao").val("copiar");
+    var self = $(this);
+    $.ajax({type: "POST",
+        url: "SalvarBD/SaveCorp.php",
+        type: "POST",
+        timeout:default_timeout,
+        data: $( "form" ).serialize();,
+        beforeSend: function(){
+            self.attr('disabled', 'true');
+        },
+        success: function() {
+
+        },
+        error: function(jqXHR, textStatus){
+            console.log(textStatus, jqXHR);
+        },
+        complete: function(){
+            self.removeAttr('disabled');
+        }
+    });
+});
+</script>
 
 
-
-				<label class="label-input100" >Qual sua Idade? *</label>
-				<div class="wrap-input100 validate-input" >
-					<input  id="Idade" class="input100" type="number" onKeyPress="if(this.value.length==3) return false;" name="idade" id="idade"  placeholder="Digite sua Idade" required>
-					<span class="focus-input100"></span>
+<label class="label-input100">Quantos Exercicios por dia?/ Sua Idade *</label>
+<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
+		<input id="quant" class="input100" type="text" name="quant" maxlength="1"  id="quant" placeholder="Exercicios por dia" required>
+		<span class="focus-input100"></span>
 				</div>
-
+				<div class="wrap-input100 rs1-wrap-input100 validate-input" > 
+		<input id="Idade" class="input100" type="number" onKeyPress="if(this.value.length==3) return false;" name="idade" id="idade"  placeholder="Digite sua Idade" required>
+		<span class="focus-input100"></span>
+				</div>
+				
 				<div class="select">
 						<select name="genero" required>
 							<option selected disabled value="">Gênero</option>
@@ -82,18 +128,10 @@ header("location:index.php");
 						</select>
 						<div class="select_arrow">
 						</div>
-					</div>
-					
-				
-
-				<!-- <label class="label-input100" for="message">Message *</label>
-				<div class="wrap-input100 validate-input" data-validate = "Message is required">
-					<textarea id="message" class="input100" name="message" placeholder="Write us a message"></textarea>
-					<span class="focus-input100"></span>
-				</div> -->
+					</div>					
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+				<button class="contact100-form-btn" id='btSelecionar' name='btSelecionar'>
 						Concluir
 					</button>
 				</div>

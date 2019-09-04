@@ -1,13 +1,13 @@
 <?php
 $id=$_SESSION['id'];
-$query4 = sprintf("SELECT dieta, imc FROM formcorp WHERE id_usuario=$id");
+$query4 = sprintf("SELECT imc FROM formcorp WHERE id_usuario=$id");
                       // executa a query
                    
                       $dados4 = mysqli_query( $conexao,$query4) or die(mysqli_error());
                       // transforma os dados em um array
                       $linha4 = mysqli_fetch_assoc($dados4);
                       $IMC=$linha4['imc'];
-                      $dieta=$linha4['dieta'];
+
                       $IMC=number_format($IMC,2);
                        
                      

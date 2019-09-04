@@ -63,32 +63,7 @@ include "includes/sidebar.php";
 
 
           $id_exercicio=$linha['id_exercicio'];
-          $AlterarManual=1;
-
-          $query3 = sprintf("SELECT id_alimento, Datas FROM Dieta WHERE id_usuario=$id order by ID");
-          // executa a query
-
-          $dados3 = mysqli_query( $conexao,$query3) or die(mysqli_error());
-          // transforma os dados em um array
-          $linha3 = mysqli_fetch_assoc($dados3);
-
-          $datas3 = date('d-m-Y', strtotime($linha3['Datas']));
-          $datas4 = date('d-m-Y', strtotime('+30 days',strtotime($datas3)));
-
-          $query4 = sprintf("SELECT ID, NomeAlimento, tipo_alimento FROM alimentos ");
-          // executa a query
-          
-          $dados4 = mysqli_query( $conexao,$query4) or die(mysqli_error());
-          // transforma os dados em um array
-          $linha4 = mysqli_fetch_assoc($dados4);
-            // calcula quantos dados retornaram
-            $total4 = mysqli_num_rows($dados4);
-          
-          // calcula quantos dados retornaram
-          $total3 = mysqli_num_rows($dados3);
-          $id_alimento=$linha3['id_alimento'];
-          $AlterarManual3=1;  
-          ?>
+?>
 
 
       <section id="main-content">
@@ -98,7 +73,7 @@ include "includes/sidebar.php";
                      
      <h3><font color="green"><?=$datas1?> &nbsp;&nbsp; &nbsp;&nbsp;<?=$datas2?></font></h3>
 
-      <a><button class="contact3-form-btn" onclick="attdieta();">Atualizar Exercícios &nbsp;&nbsp;
+      <a><button class="contact3-form-btn" onclick="attexerc();">Atualizar Exercícios &nbsp;&nbsp;
        <i class="fa fa-refresh" aria-hidden="true"></i></button></a>
 
 <table class="table bg-success">
@@ -251,50 +226,12 @@ include "includes/sidebar.php";
 }
 
 
-  function attdieta() { 
-  Swal.fire({
-  type: 'question',
-  title: 'Hmmm...',
-  html:
-    'Gostaria de atualizar sua Dieta também?<br/><br/>',
-    showCancelButton: true,
-    showCloseButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText:	'Sim',
-  cancelButtonText:	'Não',
- 
-  
-}).then((result) => {
-  if (result.value) {
-    Swal.fire({
-  type: 'success',
-  html:
-    'Seus exercicios e dieta foram atualizados!<br/><br/>',
-  confirmButtonColor: '#3085d6',
-  confirmButtonText:	'Sim',
-  onClose(){
-
-  window.location.replace("SalvarBD/Exercicios.php?codigo=1");
-
-}
-})
-  }else if (
-    // Read more about handling dismissals
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    window.location.replace("SalvarBD/Exercicios.php?codigo=2");
-    
-  }
-})
-
-}
 function attexerc() { 
   Swal.fire({
   type: 'question',
   title: 'Hmmm...',
   html:
-    'Gostaria de atualizar seus exercícios também?<br/><br/>',
+    'Deseja Atualizar seus exercicios?<br/><br/>',
     showCancelButton: true,
     showCloseButton: true,
   confirmButtonColor: '#3085d6',
@@ -308,12 +245,12 @@ function attexerc() {
     Swal.fire({
   type: 'success',
   html:
-    'Seus exercicios e dieta foram atualizados!<br/><br/>',
+    'Seus exercicios foram atualizados!<br/><br/>',
   confirmButtonColor: '#3085d6',
   confirmButtonText:	'Sim',
   onClose(){
 
-  window.location.replace("SalvarBD/Exercicios.php?codigo=1");
+  window.location.replace("SalvarBD/Exercicios.php");
 
 }
 })
@@ -321,7 +258,7 @@ function attexerc() {
     // Read more about handling dismissals
     result.dismiss === Swal.DismissReason.cancel
   ) {
-    window.location.replace("SalvarBD/Dieta.php");
+   
     
   }
 })
