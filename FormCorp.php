@@ -71,7 +71,7 @@ header("location:index.php");
 	<div class="form-group wrap-input100">
 	<label class="label-input100" for="first-name">Quais dias deseja fazer Exercicios? *</label>
 <input type="hidden" name="funcao" id="funcao" value="funcao"/>
-<select name="dias[]" id="dias" class="form-control selectpicker" data-live-search="true" multiple required>
+<select name="dias[]" id="dias" class="form-control selectpicker" data-live-search="false" multiple required>
       <option value="Segunda-Feira">Segunda-Feira</option>
       <option value="Terça-Feira">Terça-Feira</option>
       <option value="Quarta-Feira">Quarta-Feira</option>
@@ -112,7 +112,7 @@ $(document).on('click', '#btSelecionar', function(event) {
 
 <label class="label-input100">Quantos Exercicios por dia?/ Sua Idade *</label>
 <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
-		<input id="quant" class="input100" type="text" name="quant" maxlength="1"  id="quant" placeholder="Exercicios por dia" required>
+		<input  class="input100" type="text" name="quant" maxlength="1"  id="quant" placeholder="Exercicios por dia" required>
 		<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" > 
