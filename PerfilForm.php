@@ -86,6 +86,10 @@ input::-webkit-inner-spin-button {
 <option value="masculino"<?php echo $linha['genero']=='masculino'?'selected':'';?>> Masculino</option>
 <option value="feminino"<?php echo $linha['genero']=='feminino'?'selected':'';?>> Feminino</option>
             </select>
+
+            <?php
+            include "teste.php";
+            ?>
             <div class="select_arrow">
             </div>
                 </div>

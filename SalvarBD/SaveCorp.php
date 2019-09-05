@@ -1,14 +1,12 @@
 <?php
 session_start();
 include "../includes/conexao.php";
-
-    $generoVal = $_POST["genero"];
-    $exerc_dia = $_POST["quant"];
+    $id = $_SESSION['id'];
     $altura = $_POST["altura"];
     $peso= $_POST ["peso"];
     $idade= $_POST ["idade"];
-    $id = $_SESSION['id'];
-
+    $generoVal = $_POST["genero"];
+    $exer_dia = $_POST["quant"];
     $funcao = $_POST['funcao'];
     $dias = $_POST['dias'];  
     
@@ -25,7 +23,7 @@ include "../includes/conexao.php";
     if($num > 0){
       $query1 = mysqli_query($conexao, "UPDATE formcorp SET 
         altura='$altura',peso= '$peso' , idade= '$idade', genero='$generoVal',
-         exer_dia =  $exerc_dia , imc = '$imc'
+         exer_dia =  $exer_dia , imc = '$imc'
          WHERE id_usuario = '$id'");
 
 $AttDia = mysqli_query($conexao, "DELETE FROM dias_exercicios WHERE id = '$id'");
@@ -37,8 +35,8 @@ $salvarDia = mysqli_query($conexao, "INSERT INTO dias_exercicios (id, dia) VALUE
           }
           else{
         $query2 = mysqli_query($conexao, "INSERT INTO formcorp (
-              id_usuario, altura, peso, idade, genero, imc) 
-              VALUES('$id', '$altura', '$peso','$idade', '$generoVal', '$imc')");
+              id_usuario, altura, peso, idade, genero, exer_dia, imc) 
+              VALUES('$id', '$altura', '$peso','$idade', '$generoVal','$exer_dia', '$imc')");
 
 foreach ($semana1 as  $value) {
 
@@ -46,7 +44,7 @@ foreach ($semana1 as  $value) {
     }
   }
                      $_SESSION['logado']=TRUE;
-                  header("location:Exercicios.php");
+                 header("location:Exercicios.php");
                    
 
 ?>

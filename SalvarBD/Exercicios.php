@@ -7,11 +7,26 @@ header("location:index.php");
 } 
 $id_usuario=$_SESSION['id'];
 $data = date('Y-m-d');
-$Alterar =intval($_GET['codigo']);
+
+$takeexer_dia = sprintf("SELECT exer_dia FROM formcorp WHERE id_usuario=$id");
+  $takeexer_diad = mysqli_query( $conexao,$takeexer_dia) or die(mysqli_error());
+  $takeexer_dial = mysqli_fetch_assoc($takeexer_diad);
+   $takeexer_diat = mysqli_num_rows($takeexer_diad);
+
+   $dia= $takeexer_dial['exer_dia'];
+
+  $takedia = sprintf("SELECT dia FROM dias_exercicios WHERE id=$id");
+    $takediad = mysqli_query( $conexao,$takedia) or die(mysqli_error());
+    $takedial = mysqli_fetch_assoc($takediad);
+    $takediat = mysqli_num_rows($takediad);
+
+   
+
+   echo $limit=$takediat*$dia;
 
 if($IMC>=18.5 && $IMC <=24.9){
 //seleciona exercicios aleatorios para pessoas com o peso ideal
-   $query = sprintf("SELECT ID FROM exercicios ORDER BY RAND() LIMIT 10");
+   $query = sprintf("SELECT ID FROM exercicios ORDER BY RAND() LIMIT $limit");
     $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
     $id_exercicio = mysqli_fetch_assoc($dados);
   }
@@ -24,7 +39,7 @@ if($IMC>=18.5 && $IMC <=24.9){
         $procurar = "Acima do peso";  
       }
 //seleciona exercicios aleatorios para pessoas com o peso abaixo ou acima
-    $query = sprintf("SELECT ID FROM exercicios WHERE tipo_exercicio = '$procurar' OR tipo_exercicio = 'Todos usuarios' ORDER BY RAND() LIMIT 10");
+    $query = sprintf("SELECT ID FROM exercicios WHERE tipo_exercicio = '$procurar' OR tipo_exercicio = 'Todos usuarios' ORDER BY RAND() LIMIT $limit");
     $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
   $id_exercicio = mysqli_fetch_assoc($dados);
   }  
