@@ -257,6 +257,5 @@ w.value = pre+ret+pos; }
 String.prototype.reverse = function(){
 return this.split('').reverse().join(''); };
 </script>
-
 </body>
 </html>
