@@ -43,7 +43,7 @@ include "includes/sidebar.php";
 
           //redireciona para sortear caso usuario não tenha exercicios ainda
         if ($QuantExcerc<10) {
-        echo '<script> window.location.replace("SalvarBD/Exercicios.php"); </script>';
+        //echo '<script> window.location.replace("SalvarBD/Exercicios.php"); </script>';
         }
 
           $datas1 = date('d-m-Y', strtotime($linha['Datas']));
@@ -63,6 +63,16 @@ include "includes/sidebar.php";
 
 
           $id_exercicio=$linha['id_exercicio'];
+
+         $takedia = sprintf("SELECT dia FROM dias_exercicios WHERE id=$id");
+          // executa a query
+          
+          $takediadados = mysqli_query( $conexao,$takedia) or die(mysqli_error());
+          // transforma os dados em um array
+          $takedialinha = mysqli_fetch_assoc($takediadados);
+            // calcula quantos dados retornaram
+            $takediatotal = mysqli_num_rows($takediadados);
+
 ?>
 
 
@@ -92,6 +102,7 @@ include "includes/sidebar.php";
     <tr>
 
   <?php
+  
     $e = 1;                                             
     do {
     if ($linha['id_exercicio']==$linha2['ID']) {
@@ -99,11 +110,11 @@ include "includes/sidebar.php";
   
       <th scope="row"><?=$e?></th>
       <td><?php
-      if($e < 2){echo "Segunda-Feira";}
-      if($e >2 && $e < 4){echo "Terça-Feira";}
-      if($e >4 && $e < 6){echo "Quarta-Feira";}
-      if($e >6 && $e < 8){echo "Quinta-Feira";}
-      if($e > 8 && $e < 10 ){echo "Sexta-Feira";}
+      if($e < 2){echo $takedialinha['dia'];}
+      if($e >2 && $e < 4){echo $takedialinha['dia'];}
+      if($e >4 && $e < 6){echo $takedialinha['dia'];}
+      if($e >6 && $e < 8){echo $takedialinha['dia'];}
+      if($e > 8 && $e < 10 ){echo $takedialinha['dia'];}
       ?>
       </td>
       <td><?=utf8_encode($linha2['Nome'])?></td>
@@ -118,6 +129,7 @@ include "includes/sidebar.php";
 
 <?php 
                     $linha = mysqli_fetch_assoc($dados);
+                    $takedialinha = mysqli_fetch_assoc($takediadados);
                     }else{
                     $e--;
                     }
