@@ -35,7 +35,7 @@ $page="perfil";
 include "includes/sidebar.php";
 
           $query = sprintf("SELECT id_exercicio, Datas FROM lista_exercicios WHERE id_usuario=$id
-           order by id_exercicio");
+           ");
           $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
           
           $linha = mysqli_fetch_assoc($dados);
@@ -52,16 +52,19 @@ include "includes/sidebar.php";
           $data2 = new DateTime( $datas2 );
           $diasfalta = $data1->diff( $data2 );
 
-          $query2 = sprintf("SELECT ID, Nome, Quantidade, MuscAlvo,tipo_exercicio, Link FROM exercicios ");
-          // executa a query
-          
-          $dados2 = mysqli_query( $conexao,$query2) or die(mysqli_error());
-          // transforma os dados em um array
-          $linha2 = mysqli_fetch_assoc($dados2);
-            // calcula quantos dados retornaram
-            $total2 = mysqli_num_rows($dados2);
+          $linha['id_exercicio'];
 
+         echo $query2 = sprintf("SELECT ID, Nome, Quantidade, MuscAlvo, Link FROM exercicios ");
+              $dados2 = mysqli_query( $conexao,$query2) or die(mysqli_error());
+              $linha2 = mysqli_fetch_assoc($dados2);
+              $total2 = mysqli_num_rows($dados2);
 
+            $exerc_dia = sprintf("SELECT exer_dia FROM formcorp WHERE id_usuario=$id ");
+            $exerc_diad = mysqli_query( $conexao,$exerc_dia) or die(mysqli_error());
+            $exerc_dial = mysqli_fetch_assoc($exerc_diad);
+              $exerc_diat = mysqli_num_rows($exerc_diad);
+
+              
           $id_exercicio=$linha['id_exercicio'];
 
          $takedia = sprintf("SELECT dia FROM dias_exercicios WHERE id=$id");
@@ -94,7 +97,6 @@ include "includes/sidebar.php";
       <th class="centralizar" scope="col">Nome</th>
       <th class="centralizar" scope="col">Quantidade</th>
       <th class="centralizar" scope="col">Musculo Alvo</th>
-      <th class="centralizar" scope="col">Alvo</th>
       <th class="centralizar" scope="col">Demonstração</th>
     </tr>
     </thead>
@@ -103,23 +105,21 @@ include "includes/sidebar.php";
 
   <?php
   
-    $e = 1;                                             
+    $e = 0;                                             
     do {
+
     if ($linha['id_exercicio']==$linha2['ID']) {
     ?>                                                
   
-      <th scope="row"><?=$e?></th>
+      <th scope="row"><?=$e+1?></th>
       <td><?php
-      if($e < 2){echo $takedialinha['dia'];}
-      if($e >2 && $e < 4){echo $takedialinha['dia'];}
-      if($e >4 && $e < 6){echo $takedialinha['dia'];}
-      if($e >6 && $e < 8){echo $takedialinha['dia'];}
-      if($e > 8 && $e < 10 ){echo $takedialinha['dia'];}
+$NNN=$exerc_dial['exer_dia'];
+      
+      if($e%$NNN==0){echo $takedialinha['dia'];$takedialinha = mysqli_fetch_assoc($takediadados);}
       ?>
       </td>
       <td><?=utf8_encode($linha2['Nome'])?></td>
       <td><?=$linha2['Quantidade']?></td>
-      <td><?=$linha2['tipo_exercicio']?></td>
       <td><a><button class="oioi" onclick="attoneexerc();">
       <i class="fa fa-youtube-play " aria-hidden="true"></button></a></i></td>
       <td><a class="oioi" href="<?=$linha2['Link']?>" target="_blank">
@@ -129,7 +129,6 @@ include "includes/sidebar.php";
 
 <?php 
                     $linha = mysqli_fetch_assoc($dados);
-                    $takedialinha = mysqli_fetch_assoc($takediadados);
                     }else{
                     $e--;
                     }
@@ -143,7 +142,7 @@ include "includes/sidebar.php";
 </div>  
                     
                   <div class="col-lg-3 ds">
-                    
+
                         <!-- CALENDAR-->
 <div id="calendar" class="mb">
     <div class="panel green-panel no-margin">

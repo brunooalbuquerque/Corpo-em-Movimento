@@ -45,22 +45,28 @@ $takedia = sprintf("SELECT dia FROM dias_exercicios WHERE id=$id");
 $takediad = mysqli_query( $conexao,$takedia) or die(mysqli_error());
 $takedial = mysqli_fetch_assoc($takediad);
 $takediat = mysqli_num_rows($takediad);
-
-   $seg=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-   $ter=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-   $qua=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-   $qui=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-   $sex=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-   $sab=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-   $dom=$takedial['dia'];
-   $takedial = mysqli_fetch_assoc($takediad);
-
+$seg='';$ter='';$qua='';$qui='';$sex='';$sab='';$dom='';
+if ($takedial['dia']=='Segunda-Feira') {
+    $seg=$takedial['dia']; $takedial = mysqli_fetch_assoc($takediad);
+}
+if ($takedial['dia']=='Terça-Feira') {
+    $ter=$takedial['dia']; $takedial = mysqli_fetch_assoc($takediad);
+}
+if ($takedial['dia']=='Quarta-Feira') {
+    $qua=$takedial['dia']; $takedial = mysqli_fetch_assoc($takediad);
+}
+if ($takedial['dia']=='Quinta-Feira') {
+    $qui=$takedial['dia']; $takedial = mysqli_fetch_assoc($takediad);
+}
+if ($takedial['dia']=='Sexta-Feira') {
+    $sex=$takedial['dia'] ;$takedial = mysqli_fetch_assoc($takediad);
+}
+if ($takedial['dia']=='Sábado') {
+    $sab=$takedial['dia']; $takedial = mysqli_fetch_assoc($takediad);
+}
+if ($takedial['dia']=='Domingo') {
+    $dom=$takedial['dia']; $takedial = mysqli_fetch_assoc($takediad);
+}
   ?>
 
 <section id="main-content">
@@ -79,7 +85,7 @@ input::-webkit-inner-spin-button {
 <div class="col-lg-12">
     <div class="form-panel">
         <h4 class="mb"><i class="fa fa-angle-right"></i><font color="Green"> &nbsp;&nbsp;Formulário Corporal </font></h4>
-        <form class="form-horizontal style-form" method="POST" action="SalvarBD/AltFormCorp.php?codigo=<?=$id?>">
+        <form class="form-horizontal style-form" method="POST" action="SalvarBD/AltFormCorp.php">
         <div class="form-group">
                 <label class="col-sm-4 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Altura</font></label>
                 <div class="col-sm-6">
@@ -101,7 +107,7 @@ input::-webkit-inner-spin-button {
             <div class="form-group">
                 <label class="col-sm-4 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Quantidade de Exercícios</font></label>
                 <div class="col-sm-6">
-                    <input  type="text" name="quant" maxlength="1"  id="quant" placeholder="Exercicios por dia" required class="form-control round-form" value =<?=$linha['exer_dia']?>>
+                    <input  type="number" name="quant" maxlength="1" max="4" min="1" id="quant" placeholder="Exercicios por dia" required class="form-control round-form" value =<?=$linha['exer_dia']?>>
                 </div>
             </div>
             <div class="form-group">
@@ -117,61 +123,19 @@ input::-webkit-inner-spin-button {
                 </div> <label class="label-input100"><font color="Black">Dias da semana</font></label>
 <input type="hidden" name="funcao" id="funcao" value="funcao"/>
 <select name="dias[]" id="dias" class="form-control selectpicker" data-live-search="false" multiple required>
-      <option value="Segunda-Feira"<?php echo $seg=='Segunda-Feira'|| 
-      $ter=='Segunda-Feira'|| 
-      $qua=='Segunda-Feira'|| 
-      $qui=='Segunda-Feira'|| 
-      $sex=='Segunda-Feira'|| 
-      $sab=='Segunda-Feira'|| 
-      $dom=='Segunda-Feira'?'selected':'';?>>Segunda-Feira</option>
+      <option value="Segunda-Feira"<?php echo $seg=='Segunda-Feira'?'selected':'';?>>Segunda-Feira</option>
 
-      <option value="Terça-Feira"<?php echo $ter=='Terça-Feira'||
-      $seg=='Terça-Feira'||
-      $qua=='Terça-Feira'|| 
-      $qui=='Terça-Feira'|| 
-      $sex=='Terça-Feira'|| 
-      $sab=='Terça-Feira'|| 
-      $dom=='Terça-Feira'?'selected':'';?>>Terça-Feira</option>
+      <option value="Terça-Feira"<?php echo $ter=='Terça-Feira'?'selected':'';?>>Terça-Feira</option>
 
-      <option value="Quarta-Feira"<?php echo $qua=='Quarta-Feira'||
-      $seg=='Quarta-Feira'|| 
-      $ter=='Quarta-Feira'|| 
-      $qui=='Quarta-Feira'|| 
-      $sex=='Quarta-Feira'|| 
-      $sab=='Quarta-Feira'|| 
-      $dom=='Quarta-Feira'?'selected':'';?>>Quarta-Feira</option>
+      <option value="Quarta-Feira"<?php echo $qua=='Quarta-Feira'?'selected':'';?>>Quarta-Feira</option>
 
-      <option value="Quinta-Feira"<?php echo $qui=='Quinta-Feira'||
-      $seg=='Quinta-Feira'||
-      $ter=='Quinta-Feira'|| 
-      $qua=='Quinta-Feira'||  
-      $sex=='Quinta-Feira'|| 
-      $sab=='Quinta-Feira'|| 
-      $dom=='Quinta-Feira'?'selected':'';?>>Quinta-Feira</option>
+      <option value="Quinta-Feira"<?php echo $qui=='Quinta-Feira'?'selected':'';?>>Quinta-Feira</option>
 
-      <option value="Sexta-Feira"<?php echo $sex=='Sexta-Feira'||
-      $seg=='Sexta-Feira'||
-      $ter=='Sexta-Feira'|| 
-      $qua=='Sexta-Feira'|| 
-      $qui=='Sexta-Feira'||  
-      $sab=='Sexta-Feira'|| 
-      $dom=='Sexta-Feira'?'selected':'';?>>Sexta-Feira</option>
+      <option value="Sexta-Feira"<?php echo $sex=='Sexta-Feira'?'selected':'';?>>Sexta-Feira</option>
 
-      <option value="Sábado"<?php echo $sab=='Sábado'||
-      $seg=='Sábado'|| 
-      $ter=='Sábado'|| 
-      $qua=='Sábado'|| 
-      $qui=='Sábado'|| 
-      $sex=='Sábado'||  
-      $dom=='Sábado'?'selected':'';?>>Sábado</option>
+      <option value="Sábado"<?php echo $sab=='Sábado'?'selected':'';?>>Sábado</option>
 
-      <option value="Domingo"<?php echo $dom=='Domingo'||
-      $seg=='Domingo'||
-      $ter=='Domingo'|| 
-      $qua=='Domingo'|| 
-      $qui=='Domingo'|| 
-      $sex=='Domingo'|| 
-      $sab=='Domingo'?'selected':'';?>>Domingo</option>
+      <option value="Domingo"<?php echo $dom=='Domingo'?'selected':'';?>>Domingo</option>
 </select>
                     </div>   
                         </div>     
