@@ -34,8 +34,10 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
 $page="perfil";
 include "includes/sidebar.php";
 
-          $query = sprintf("SELECT id_exercicio, Datas FROM lista_exercicios WHERE id_usuario=$id
-           ");
+         $query = sprintf("SELECT  lista_exercicios.id_exercicio,  lista_exercicios.Datas,
+                                   exercicios.Nome, exercicios.Quantidade, exercicios.MuscAlvo, exercicios.Link  
+         FROM lista_exercicios INNER JOIN  exercicios ON lista_exercicios.id_exercicio = exercicios.ID 
+         WHERE  lista_exercicios.id_usuario=$id");
           $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
           
           $linha = mysqli_fetch_assoc($dados);
@@ -51,13 +53,6 @@ include "includes/sidebar.php";
           $data1 = new DateTime( $datas1 );
           $data2 = new DateTime( $datas2 );
           $diasfalta = $data1->diff( $data2 );
-
-          $linha['id_exercicio'];
-
-         echo $query2 = sprintf("SELECT ID, Nome, Quantidade, MuscAlvo, Link FROM exercicios ");
-              $dados2 = mysqli_query( $conexao,$query2) or die(mysqli_error());
-              $linha2 = mysqli_fetch_assoc($dados2);
-              $total2 = mysqli_num_rows($dados2);
 
             $exerc_dia = sprintf("SELECT exer_dia FROM formcorp WHERE id_usuario=$id ");
             $exerc_diad = mysqli_query( $conexao,$exerc_dia) or die(mysqli_error());
@@ -107,10 +102,7 @@ include "includes/sidebar.php";
   
     $e = 0;                                             
     do {
-
-    if ($linha['id_exercicio']==$linha2['ID']) {
     ?>                                                
-  
       <th scope="row"><?=$e+1?></th>
       <td><?php
 $NNN=$exerc_dial['exer_dia'];
@@ -118,25 +110,22 @@ $NNN=$exerc_dial['exer_dia'];
       if($e%$NNN==0){echo $takedialinha['dia'];$takedialinha = mysqli_fetch_assoc($takediadados);}
       ?>
       </td>
-      <td><?=utf8_encode($linha2['Nome'])?></td>
-      <td><?=$linha2['Quantidade']?></td>
+      <td><?=utf8_encode($linha['Nome'])?></td>
+      <td><?=$linha['Quantidade']?></td>
       <td><a><button class="oioi" onclick="attoneexerc();">
       <i class="fa fa-youtube-play " aria-hidden="true"></button></a></i></td>
-      <td><a class="oioi" href="<?=$linha2['Link']?>" target="_blank">
+      <td><a class="oioi" href="<?=$linha['Link']?>" target="_blank">
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>
   </tbody>
 
 <?php 
-                    $linha = mysqli_fetch_assoc($dados);
-                    }else{
-                    $e--;
-                    }
+                   
                     $e++;
-                    }while($linha2 = mysqli_fetch_assoc($dados2));
+                    }while( $linha = mysqli_fetch_assoc($dados));
                     
                     mysqli_free_result($dados);
-                    mysqli_free_result($dados2);
+                
                       ?>
 </table> 
 </div>  
