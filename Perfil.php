@@ -34,8 +34,8 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
 $page="perfil";
 include "includes/sidebar.php";
 
-         $query = sprintf("SELECT  lista_exercicios.id_exercicio,  lista_exercicios.Datas,
-                                   exercicios.Nome, exercicios.Quantidade, exercicios.MuscAlvo, exercicios.Link  
+         $query = sprintf("SELECT lista_exercicios.id_exercicio,  lista_exercicios.Datas,
+         exercicios.Nome, exercicios.Quantidade, exercicios.MuscAlvo, exercicios.Link  
          FROM lista_exercicios INNER JOIN  exercicios ON lista_exercicios.id_exercicio = exercicios.ID 
          WHERE  lista_exercicios.id_usuario=$id");
           $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
