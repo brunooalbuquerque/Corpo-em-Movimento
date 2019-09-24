@@ -60,7 +60,6 @@ include "includes/sidebar.php";
             $exerc_diad = mysqli_query( $conexao,$exerc_dia) or die(mysqli_error());
             $exerc_dial = mysqli_fetch_assoc($exerc_diad);
             $exerc_diat = mysqli_num_rows($exerc_diad);
-
               
             $id_exercicio=$linha['id_exercicio'];
 
@@ -74,12 +73,23 @@ include "includes/sidebar.php";
           $takediatotal = mysqli_num_rows($takediadados);
 
 
-          $query_qtd = sprintf("SELECT historico_qtd.quantia_ex
+          $query_qtd = sprintf("SELECT historico_qtd.quantia_ex, historico_qtd.id_exerc
           FROM historico_qtd INNER JOIN lista_exercicios ON historico_qtd.id_exerc = 
           lista_exercicios.id_exercicio
-          WHERE lista_exercicios.id_usuario=$id");
+          WHERE lista_exercicios.id_usuario=$id AND historico_qtd.id_user=$id");
           $qtd_exercicio = mysqli_query($conexao,$query_qtd) or die(mysqli_error());
           $quantia_user = mysqli_fetch_assoc($qtd_exercicio);
+
+          $passId = sprintf("SELECT lista_exercicios.id_exercicio,  lista_exercicios.Datas,
+          exercicios.Nome, exercicios.Quantidade, exercicios.MuscAlvo, exercicios.Link  
+          FROM lista_exercicios INNER JOIN  exercicios ON lista_exercicios.id_exercicio = exercicios.ID 
+          WHERE  lista_exercicios.id_usuario=$id");
+           $passIdd = mysqli_query( $conexao,$passId) or die(mysqli_error());
+           
+           $passIdl = mysqli_fetch_assoc($passIdd);
+           $passIdt = mysqli_num_rows($passIdd);
+
+
 ?>
 
 
@@ -93,7 +103,7 @@ include "includes/sidebar.php";
       <a><button class="contact3-form-btn" onclick="attexerc();">Atualizar Exercícios &nbsp;&nbsp;
        <i class="fa fa-refresh" aria-hidden="true"></i></button></a>
 
-       <form name="saveQtd" method="post" action="SalvarBD/SaveQuantia.php" id="form">
+       <form name="saveQtd" method="post" action="SalvarBD/SaveQuantia.php?oi" id="form">
 
 <table class="table bg-success">
     <thead class="bg-dark">
@@ -112,6 +122,7 @@ include "includes/sidebar.php";
   <?php
     $e = 0;                                             
     do {
+
     ?>                                                
       <th scope="row"><?=$e+1?></th>
       <td><?php
@@ -122,32 +133,51 @@ $NNN=$exerc_dial['exer_dia'];
       </td>
       <td><?=utf8_encode($linha['Nome'])?></td>
 
-  <td><input type="text" name="quantia[]" placeholder="Digite sua quantia" 
-  value="<?=$quantia_user['quantia_ex']?>"
-      class="form-control round-form centralizar" data-toggle="tooltip" data-html="true" 
-      title="<h5>Quantidade Recomendada: <?=$linha['Quantidade']?></h5>" data-placement="top" required></td>
+  <td><center><input class="inputquantia centralizar"  type="text" name="quantia[]" placeholder="Digite sua quantia" 
+  value="<?php
+  if ($linha['id_exercicio']==$quantia_user['id_exerc']) {
+    echo $quantia_user['quantia_ex'];
+    $quantia_user = mysqli_fetch_assoc($qtd_exercicio);}?>"
+    class="form-control round-form centralizar" data-toggle="tooltip" data-html="true" 
+      title="<h5>Quantidade Recomendada: <?=$linha['Quantidade'];?>
+      </h5>" data-placement="top" required></center></td>
     
     
       <td><a><button class="oioi" onclick="attoneexerc();">
-      <i class="fa fa-youtube-play" aria-hidden="true"></button></a></i></td>
+      <i class="fa fa-youtube-play" aria-hidden="true"><?=$linha['id_exercicio']?></button></a></i></td>
       <td><a class="oioi" href="<?=$linha['Link']?>" target="_blank">
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>
   </tbody>
+<style>
+.inputquantia{
+  
+  padding: 15px;
+  height:0px;
+  width:100px;
+    font-size:14pt;
+  border-radius: 15px;
+  background-color:#212529;
 
+}
+</style>
 <?php 
-                    $quantia_user = mysqli_fetch_assoc($qtd_exercicio);
-                    $e++;
-                    }while( $linha = mysqli_fetch_assoc($dados));
-                    
-                    mysqli_free_result($dados);
-                
-                      ?>
+
+ $id_todos_exerc[]=$passIdl['id_exercicio'];
+ $passIdl = mysqli_fetch_assoc($passIdd);
+
+          $e++;
+          }while( $linha = mysqli_fetch_assoc($dados));
+        
+               $quantia2 = implode(',',$id_todos_exerc);
+          mysqli_free_result($dados);
+         
+            ?>
+             <input type="hidden" id="custId" name="id_todos_exerc" value="<?=$quantia2?>">
       </table>           
-    <button type="submit" class="btn btn-success" onclick="myFunction()">Salvar Quantidade</button>
+    <button type="submit" class="btn btn-success">Salvar Quantidade</button>
   </div>
 </form>  
-
                     
                   <div class="col-lg-3 ds">
 
