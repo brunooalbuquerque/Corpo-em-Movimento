@@ -17,6 +17,13 @@ $dados = mysqli_query($conexao,$barrar) or die(mysqli_error());
                                       echo '<script> window.location.replace("FormCorp.php"); </script>';
                                       }
 ?>
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+
   <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
   <section id="container" >
@@ -43,11 +50,6 @@ include "includes/sidebar.php";
           $linha = mysqli_fetch_assoc($dados);
           $QuantExcerc = mysqli_num_rows($dados);
 
-          //redireciona para sortear caso usuario não tenha exercicios ainda
-        if ($QuantExcerc<10) {
-        //echo '<script> window.location.replace("SalvarBD/Exercicios.php"); </script>';
-        }
-
           $datas1 = date('d-m-Y', strtotime($linha['Datas']));
           $datas2 = date('d-m-Y', strtotime('+30 days',strtotime($datas1)));
           $data1 = new DateTime( $datas1 );
@@ -57,10 +59,10 @@ include "includes/sidebar.php";
             $exerc_dia = sprintf("SELECT exer_dia FROM formcorp WHERE id_usuario=$id ");
             $exerc_diad = mysqli_query( $conexao,$exerc_dia) or die(mysqli_error());
             $exerc_dial = mysqli_fetch_assoc($exerc_diad);
-              $exerc_diat = mysqli_num_rows($exerc_diad);
+            $exerc_diat = mysqli_num_rows($exerc_diad);
 
               
-          $id_exercicio=$linha['id_exercicio'];
+            $id_exercicio=$linha['id_exercicio'];
 
          $takedia = sprintf("SELECT dia FROM dias_exercicios WHERE id=$id");
           // executa a query
@@ -69,8 +71,15 @@ include "includes/sidebar.php";
           // transforma os dados em um array
           $takedialinha = mysqli_fetch_assoc($takediadados);
             // calcula quantos dados retornaram
-            $takediatotal = mysqli_num_rows($takediadados);
+          $takediatotal = mysqli_num_rows($takediadados);
 
+
+          $query_qtd = sprintf("SELECT historico_qtd.quantia_ex
+          FROM historico_qtd INNER JOIN lista_exercicios ON historico_qtd.id_exerc = 
+          lista_exercicios.id_exercicio
+          WHERE lista_exercicios.id_usuario=$id");
+          $qtd_exercicio = mysqli_query($conexao,$query_qtd) or die(mysqli_error());
+          $quantia_user = mysqli_fetch_assoc($qtd_exercicio);
 ?>
 
 
@@ -79,10 +88,12 @@ include "includes/sidebar.php";
               <div class="row"> 
                   <div class="col-lg-9 main-chart">
                      
-     <h3><font color="green"><?=$datas1?> &nbsp;&nbsp; &nbsp;&nbsp;<?=$datas2?></font></h3>
+     <h3><font color="green"><?=$datas1?> &nbsp;&nbsp;&nbsp;&nbsp;<?=$datas2?></font></h3>
 
       <a><button class="contact3-form-btn" onclick="attexerc();">Atualizar Exercícios &nbsp;&nbsp;
        <i class="fa fa-refresh" aria-hidden="true"></i></button></a>
+
+       <form name="saveQtd" method="post" action="SalvarBD/SaveQuantia.php" id="form">
 
 <table class="table bg-success">
     <thead class="bg-dark">
@@ -97,9 +108,8 @@ include "includes/sidebar.php";
     </thead>
   <tbody>
     <tr>
-
+      
   <?php
-  
     $e = 0;                                             
     do {
     ?>                                                
@@ -111,24 +121,33 @@ $NNN=$exerc_dial['exer_dia'];
       ?>
       </td>
       <td><?=utf8_encode($linha['Nome'])?></td>
-      <td><?=$linha['Quantidade']?></td>
+
+  <td><input type="text" name="quantia[]" placeholder="Digite sua quantia" 
+  value="<?=$quantia_user['quantia_ex']?>"
+      class="form-control round-form centralizar" data-toggle="tooltip" data-html="true" 
+      title="<h5>Quantidade Recomendada: <?=$linha['Quantidade']?></h5>" data-placement="top" required></td>
+    
+    
       <td><a><button class="oioi" onclick="attoneexerc();">
-      <i class="fa fa-youtube-play " aria-hidden="true"></button></a></i></td>
+      <i class="fa fa-youtube-play" aria-hidden="true"></button></a></i></td>
       <td><a class="oioi" href="<?=$linha['Link']?>" target="_blank">
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>
   </tbody>
 
 <?php 
-                   
+                    $quantia_user = mysqli_fetch_assoc($qtd_exercicio);
                     $e++;
                     }while( $linha = mysqli_fetch_assoc($dados));
                     
                     mysqli_free_result($dados);
                 
                       ?>
-</table> 
-</div>  
+      </table>           
+    <button type="submit" class="btn btn-success" onclick="myFunction()">Salvar Quantidade</button>
+  </div>
+</form>  
+
                     
                   <div class="col-lg-3 ds">
 
@@ -148,8 +167,8 @@ $NNN=$exerc_dial['exer_dia'];
 </div><!-- / calendar -->
                       
                   </div><!-- /col-lg-3 -->
-              </div> 
       
+              </div> 
           </section>
       </section>
 
@@ -318,6 +337,11 @@ function attexerc() {
             var to = $("#" + id).data("to");
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
+
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  
+})
     </script>
   </body>
 </html>
