@@ -181,9 +181,9 @@ document.getElementById("login").style.display = "none";
                   <ul>
 
                     <div class="slide-body" data-group="slide">
-                    <li><img alt="" class="img-responsive" src="https://www.saudemelhor.com/wp-content/uploads/2017/01/frutas-diabetes.jpg" width="100%" height="350" /></li>
-                    <li><img alt="" class="img-responsive" src="https://www.saudedia.com.br/wp-content/uploads/2019/02/lanches-saudaveis-que-ajudam-a-perder-peso.jpg" width="100%" height="350" /></li>
-                    <li><img alt="" class="img-responsive" src="https://www.colombo.com.br/blog/wp-content/uploads/2015/09/destacada.gif" width="100%" height="350" /></li>
+                    <li><img alt="" class="img-responsive" src="img/projeto1.jpg" width="100%" height="350" /></li>
+                    <li><img alt="" class="img-responsive" src="img/projeto2.jpg" width="100%" height="350" /></li>
+                    <li><img alt="" class="img-responsive" src="img/projeto3.jpg" width="100%" height="350" /></li>
 
                     </div>
                   </ul>
