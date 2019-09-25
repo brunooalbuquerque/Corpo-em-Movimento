@@ -149,16 +149,15 @@ $NNN=$exerc_dial['exer_dia'];
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>
   </tbody>
+  
 <style>
 .inputquantia{
-  
   padding: 15px;
   height:0px;
-  width:100px;
-    font-size:14pt;
+  width:166px;
+  font-size:12pt;
   border-radius: 15px;
-  background-color:#212529;
-
+  background-color:rgb(46, 45, 45,0.3);
 }
 </style>
 <?php 
