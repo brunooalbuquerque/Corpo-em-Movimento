@@ -24,16 +24,17 @@ $mudou=0;
         mysqli_select_db($conexao, $dbname);
         $diad = mysqli_query( $conexao,$dia) or die(mysqli_error());
         $dial = mysqli_fetch_assoc($diad);
-
+        $diat = mysqli_num_rows($diad);
 
 
         if(!empty($_POST["dias"]) and is_array($_POST["dias"])) {
           $semana = implode(',',$_POST["dias"]);
       }
       $semana1 = explode(',' , $semana);
-
-      for ($i=0; $i <count($semana1); $i++) {
+      
+      for ($i=0; $i <$diat; $i++) {
         echo  $dial['dia'],'<br>';
+        echo  $semana1[$i],'s<br>';
         if( $dial['dia']!=$semana1[$i]){
 echo "entro"; $mudou=1;
         }else {
@@ -61,7 +62,7 @@ echo "entro"; $mudou=1;
 
             }else {
              echo "n troca";
-            header("location:../Perfil.php");
+          header("location:../Perfil.php");
             }
 
 ?>
