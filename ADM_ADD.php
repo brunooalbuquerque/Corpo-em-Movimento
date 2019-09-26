@@ -24,69 +24,59 @@
 </head>
 <body>
 
-	<div class="bg-contact3" style="background-image: url('img/bg-01.jpg');">
-		<div class="container-contact3">
-			<div class="wrap-contact3">
-				<form  class="contact3-form validate-form" method="POST" action="SalvarBD/SaveExerc.php" enctype="multipart/form-data">
-				
-					<span class="contact3-form-title" id="1" >
-						Cadastrar Exercicios
-					</span>
-					<div class="wrap-contact3-form-radio">
-						<div class="contact3-form-radio m-r-42">
-						</div>
-
-					
-					</div>
-
-					<div class="wrap-input3 validate-input"id="div1">
-						<input class="input3" type="text" name="NomeExerc" placeholder="Nome Exercício" required>
-						<span class="focus-input3"></span>
-					</div>
-					<div class="wrap-input3 validate-input"id="div2">
-						<input class="input3" type="text" name="Quantidade" placeholder="Quantidade" required>
-						<span class="focus-input3"></span>
-					</div>
-					<div class="wrap-input3 validate-input"id="div2">
-						<input class="input3" type="text" name="youtube" 
-						placeholder="Insira o link de demonstração do exercício" required>
-						<span class="focus-input3"></span>
-					</div>
-					<div class="wrap-input3 validate-input"id="div3">
-						<div>						
-							<select class="selection-2" name="MuscAlvo" required aria-required="true">
-								<option disabled selected hidden value="">Musculo Alvo</option>
-								<option value="Frontal">Frontal</option>
-								<option value="Dorsal">Dorsal</option>
-                                <option value="Pernas">Pernas</option>
-                                <option value="Abdomen">Abdômem</option>
-							</select>
-						</div>
-						<span class="focus-input3"></span>
-					</div>
-				
-					
-							<div class="container-contact3-form-btn" id="div8">
-						<button class="contact3-form-btn">
-							Adicionar
-						</button>
-						<br>
-					
-					</div>
-				</form>
-<!-- parte dois -->
-
-
-				<div class="container-contact3-form-btn  " id="div9">
-				<a href="ADM_AlterarExerc.php">
-     <button class="contact3-form-btn">Exercícios cadastrados</button>
-</a>
-</div>
-
+<div class="bg-contact3" style="background-image: url('img/bg-01.jpg');">
+<div class="container-contact3">
+	<div class="wrap-contact3">
+		<form  class="contact3-form validate-form" method="POST" action="SalvarBD/SaveExerc.php" enctype="multipart/form-data">
+			<span class="contact3-form-title" id="1" >
+				Cadastrar Exercicios
+			</span>
+			
+			<div class="wrap-input3 validate-input"id="div1">
+				<input class="input3" type="text" name="NomeExerc" placeholder="Nome Exercício" required>
+				<span class="focus-input3"></span>
 			</div>
-		</div>
-	</div>
+			<div class="wrap-input3 validate-input"id="div2">
+				<input class="input3" type="text" name="Quantidade" placeholder="Quantidade" required>
+				<span class="focus-input3"></span>
+			</div>
+			<div class="wrap-input3 validate-input"id="div2">
+				<input class="input3" type="text" name="youtube" 
+				placeholder="Insira o link de demonstração do exercício" required>
+				<span class="focus-input3"></span>
+			</div>
+			<div class="wrap-input3 validate-input"id="div3">
+				<div>						
+					<select class="selection-2" name="MuscAlvo" required aria-required="true">
+						<option disabled selected hidden value="">Musculo Alvo</option>
+						<option value="Frontal">Frontal</option>
+						<option value="Dorsal">Dorsal</option>
+						<option value="Pernas">Pernas</option>
+						<option value="Abdomen">Abdômem</option>
+					</select>
+				</div>
+				<span class="focus-input3"></span>
+			</div>
+			
+			<div class="container-contact3-form-btn" id="div8">
+				<button class="contact3-form-btn">
+					Adicionar
+				</button>
+				<br>
+			</div>
+		</form>
 
+			<div class="container-contact3-form-btn  " id="div9">
+				<a href="ADM_AlterarExerc.php">
+    		 	<button class="contact3-form-btn">
+					 Exercícios cadastrados
+				</button>
+				</a>
+			</div>
+
+	</div>
+</div>
+</div>
 
 	<div id="dropDownSelect1"></div>
 
