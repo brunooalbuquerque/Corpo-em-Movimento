@@ -186,7 +186,7 @@ if(intval($_GET['codigo']) == 3){
                      </div>
                  
               </div> 
-      <br><br><br><br><br><br><br><br>
+
           </section>
 
       </section>

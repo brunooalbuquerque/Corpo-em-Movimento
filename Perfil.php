@@ -51,10 +51,8 @@ include "includes/sidebar.php";
           $QuantExcerc = mysqli_num_rows($dados);
 
           $datas1 = date('d-m-Y', strtotime($linha['Datas']));
-          $datas2 = date('d-m-Y', strtotime('+30 days',strtotime($datas1)));
-          $data1 = new DateTime( $datas1 );
-          $data2 = new DateTime( $datas2 );
-          $diasfalta = $data1->diff( $data2 );
+  
+
 
             $exerc_dia = sprintf("SELECT exer_dia FROM formcorp WHERE id_usuario=$id ");
             $exerc_diad = mysqli_query( $conexao,$exerc_dia) or die(mysqli_error());
@@ -94,16 +92,16 @@ include "includes/sidebar.php";
 
 
       <section id="main-content">
-          <section class="wrapper centralizar">
+          <section class="wrapper ">
               <div class="row"> 
                   <div class="col-lg-9 main-chart">
                      
-     <h3><font color="green"><?=$datas1?> &nbsp;&nbsp;&nbsp;&nbsp;<?=$datas2?></font></h3>
+     <h3><font color="green">Exercícios gerados no dia: <?=$datas1?></font></h3>
 
       <a><button class="contact3-form-btn" onclick="attexerc();">Atualizar Exercícios &nbsp;&nbsp;
        <i class="fa fa-refresh" aria-hidden="true"></i></button></a>
 
-       <form name="saveQtd" method="post" action="SalvarBD/SaveQuantia.php?oi" id="form">
+       <form name="saveQtd" class = "centralizar" method="post" action="SalvarBD/SaveQuantia.php?oi" id="form">
 
 <table class="table bg-success">
     <thead class="bg-dark">
@@ -228,7 +226,7 @@ $NNN=$exerc_dial['exer_dia'];
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-      <footer class="site-footer">
+      <footer class="site-footer-perfil">
           <div class="text-center">
               2019 - Corpo Em Movimento
               <a href="Perfil.php#" class="go-top">
@@ -320,13 +318,13 @@ function attexerc() {
             // (string | mandatory) the heading of the notification
             title: 'Bem Vindo(a)  <br><?=$_SESSION['user']; ?>!',
             // (string | mandatory) the text inside the notification
-            text: '  <a  target="_blank" style="color:#ffd777"><?=$diasfalta->days;?> dias para atualizar a lista de exercicios</a>.',
+            text: '  <a  target="_blank" style="color:#ffd777">a</a>.',
             // (string | optional) the image to display on the left
             image: 'img/logoreal.png',
             // (bool | optional) if you want it to fade out on its own or just sit there
             sticky: false,
             // (int | optional) the time you want it to be alive for before fading out
-            time: 4000,
+            time: 1200,
             // (string | optional) the class name you want to apply to that specific message
             class_name: 'my-sticky-class'
         });

@@ -52,7 +52,7 @@ include "IMC.php";
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="perfil.php"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+    <p class="centered"><a href="perfil.php"><img src="img/logoreal.png" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><?=$_SESSION['user'];?></h5><hr></hr>
                    <h5 class="centered"><span>IMC: </span><?=$IMC;?> <i class="fa fa-heartbeat" aria-hidden="true"></i></h5>
                     <h5 class="centered"><?=$classificacao;?></h5>

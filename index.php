@@ -49,8 +49,9 @@ $teste=1;
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="fa fa-bars color-white"></span>
           </button>
-          <h1><a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;">Corpo em Movimento
-            </a></h1>
+          <h1> 
+      <a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;"><img src="img/logoreal.png" data-300="line-height:50px; height:50px;"/> &nbsp;Corpo em Movimento
+     </a></h1>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
@@ -58,7 +59,7 @@ $teste=1;
             <li><a href="#section-about">Sobre Nós</a></li>
             <li><a href="#services">O que Oferecemos</a></li>
             <li><a href="#team">Time</a></li>
-            <li><a id="login" href="Login_CriarConta.php">Login</a></li>
+            <li><a id="login" href="login.php">Login</a></li>
             <li><a id="perfil" href="perfil.php">Meu Perfil</a></li>
             <li><a id= "sair" href="SalvarBD/logout.php">Sair</a></li>
           </ul>

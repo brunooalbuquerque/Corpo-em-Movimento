@@ -149,13 +149,7 @@ input::-webkit-inner-spin-button {
    
 		</section><!-- /wrapper -->
       </section>         
-      <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <footer class="site-footer">
           <div class="text-center">
               2019 - Corpo Em Movimento

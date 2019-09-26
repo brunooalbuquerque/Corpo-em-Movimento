@@ -595,23 +595,14 @@ section.section {
 ============================= */
 
 #parallax1 {
-  background-image: url(img/corpo1.jpg);
+  background-image: url(../img/corpo1.jpg);
   /* ../img/parallax/corre.jpg */
   height: 500px;
 }
 
-#parallax2 {
-  background-image: url(http://unimed.coop.br/portalunimed/cartilhas/combate-ao-cancer-de-prostata/images/homemcorrendo.jpg);
-  height: 500px;
-}
-
-#testimonials {
-  background-image: url(http://bushidobrasil.com.br/wp-content/uploads/2018/04/7-meditacao-1500x600.jpg);
-  height: 500px;
-}
 
 #testimonials-3 {
-  background-image: url(https://plenasaude.com.br/wp-content/uploads/2016/01/alimentacao-ecologica-plena-saude.png);
+  background-image: url(../img/greenfruit.jpg);
   
 /*http://3.bp.blogspot.com/-G_CjnIi23_w/UFekBFXcHNI/AAAAAAAAOw4/tDlGE-la_7k/s1600/enigma.bmp*/ 
   height: 500px;

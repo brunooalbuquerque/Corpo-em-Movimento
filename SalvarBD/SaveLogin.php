@@ -11,7 +11,7 @@ function alertcontanexiste() {
   `,
   timer: 6000,
   onClose(){
-  window.location.replace("../Login_CriarConta.php");
+  window.location.replace("../Login.php");
 }
 })
 }
@@ -47,7 +47,7 @@ $count = mysqli_fetch_array($query,MYSQLI_NUM)[0];
  }
  else{
 
-  header("location:../Login_CriarConta.php?codigo=1");
+  header("location:../login.php?codigo=1");
   //echo "<script> alertcontanexiste(); </script>";
  }
 ?>

@@ -28,26 +28,15 @@
 		<div class="container-contact3">
 			<div class="wrap-contact3">
 				<form  class="contact3-form validate-form" method="POST" action="SalvarBD/SaveExerc.php" enctype="multipart/form-data">
-					<span class="contact3-form-title" id="2" style="display:none;">
-						Cadastrar Alimentos
-					</span>
+				
 					<span class="contact3-form-title" id="1" >
 						Cadastrar Exercicios
 					</span>
 					<div class="wrap-contact3-form-radio">
 						<div class="contact3-form-radio m-r-42">
-							<input class="input-radio3" id="radio1" type="radio" name="choice" value="say-hi" onclick="$('#div1,#div2,#div3,#div4,#div8,#div9,#1').show();$('#div5,#div6,#div7,#div10,#div11,#2').hide()" checked="checked">
-							<label class="label-radio3" for="radio1">
-								Exercicios
-							</label>
 						</div>
 
-						<div class="contact3-form-radio" >
-							<input class="input-radio3" id="radio2" type="radio" name="choice" value="get-quote" onclick="$('#div1,#div2,#div3,#div4,#div8,#div9,#1').hide();$('#div5,#div6,#div7,#div10,#div11,#2').show()">
-							<label class="label-radio3" for="radio2">
-								Alimentos
-							</label>
-						</div>
+					
 					</div>
 
 					<div class="wrap-input3 validate-input"id="div1">
@@ -56,6 +45,11 @@
 					</div>
 					<div class="wrap-input3 validate-input"id="div2">
 						<input class="input3" type="text" name="Quantidade" placeholder="Quantidade" required>
+						<span class="focus-input3"></span>
+					</div>
+					<div class="wrap-input3 validate-input"id="div2">
+						<input class="input3" type="text" name="youtube" 
+						placeholder="Insira o link de demonstração do exercício" required>
 						<span class="focus-input3"></span>
 					</div>
 					<div class="wrap-input3 validate-input"id="div3">
@@ -70,18 +64,7 @@
 						</div>
 						<span class="focus-input3"></span>
 					</div>
-					<div class="wrap-contact3-form-radio"id="div4">
-							<div class="control-group">
-									
-									<label class="control control-checkbox">
-										Esse Exercício é para Academia?
-										<input type="hidden" name="ExercAcad" value="Nao"/>
-											<input type="checkbox" name="ExercAcad" value="Sim"/>
-											
-										<div class="control_indicator"></div>
-									</label>
-								</div>
-							</div>
+				
 					
 							<div class="container-contact3-form-btn" id="div8">
 						<button class="contact3-form-btn">
@@ -90,51 +73,16 @@
 						<br>
 					
 					</div>
-				
-							</form>
-<!-- parte dois -->
-<form  class="contact3-form validate-form" method="POST" action="SalvarBD/SaveAlimento.php" enctype="multipart/form-data">
-						
-					<div class="wrap-input3 " id="div5"  style="display:none;">
-						<input class="input3" type="text" name="NomeAlimento" placeholder="Nome Alimento" required>
-						<span class="focus-input3"></span>
-					</div>
-					<div class="wrap-input3 " id="div6" style="display:none;">
-						<input class="input3" type="text" name="QuantidadeAlimento" placeholder="Quantidade" required>
-						<span class="focus-input3"></span>
-					</div>
-					<div class="wrap-contact3-form-radio  " id="div7" style="display:none;">
-							<div class="control-group">
-									
-									<label class="control control-checkbox" >
-										Esse Alimento é para ganhar peso?
-										<input type="hidden" name="GanharPeso" value="Nao"/>
-											<input type="checkbox" name="GanharPeso" value="Sim"/>
-											
-										<div class="control_indicator"></div>
-									</label>
-								</div>
-</div>
-					
-					<div class="container-contact3-form-btn"  id="div10" style="display:none;">
-						<button class="contact3-form-btn">
-							Adicionar
-						</button>
-						<br>
-					
-					</div>
 				</form>
+<!-- parte dois -->
+
 
 				<div class="container-contact3-form-btn  " id="div9">
 				<a href="ADM_AlterarExerc.php">
      <button class="contact3-form-btn">Exercícios cadastrados</button>
 </a>
 </div>
-<div class="container-contact3-form-btn  " id="div11" style="display:none;">
-<a href="ADM_AlterarAlimento.php">
-     <button class="contact3-form-btn">Alimentos cadastrados</button>
-</a>
-</div>
+
 			</div>
 		</div>
 	</div>

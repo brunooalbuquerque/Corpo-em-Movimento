@@ -84,10 +84,9 @@ header("location:index.php");
                           </div>
                       
                    
-                     </div>
-                 
+                </div>
               </div> 
-            <br><br><br><br><br><br><br><br>      <br><br><br>
+            <br><br><br>
           </section>
       </section>
 

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" >
+  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
 <head>
+  
 <script type="text/javascript">
 function alertcontanexiste() { 
   Swal.fire({
@@ -13,13 +15,14 @@ function alertcontanexiste() {
 })
 }
 </script>
+
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="img/LogoIcon.ico"/>
     <title>Login - Corpo em Movimento</title>
   
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 
-      <link rel="stylesheet" href="mycss/style.css">
+    <link rel="stylesheet" href="mycss/style.css">
 <!-- As a link -->
 
 <div class="nav">
@@ -145,7 +148,7 @@ body {
   
 </head>
 <body>
-  <p class="tip"></p>
+
 <div class="cont">
   <div class="form sign-in">
     <h2>Bem Vindo!</h2>
@@ -209,6 +212,7 @@ if(intval($_GET['codigo']) == 1){
       <script  src="js/index.js"></script>
 </div>
 </body>
+
 <script>
 var checker = document.getElementById('termo');
 var sendbtn = document.getElementById('enviar');

@@ -2217,9 +2217,23 @@ label {
 
 /*footer*/
 .site-footer {
+    
+    bottom: 0;
+    margin: 90px 0px 0px 0px;
+    width: 100%;
     background: #41A64A;
     color: #fff;
-    padding: 10px 0;
+    padding: 7px;
+}
+
+.site-footer-perfil {
+    
+    bottom: 0;
+    margin: 120px 0px 0px 0px;
+    width: 100%;
+    background: #41A64A;
+    color: #fff;
+    padding: 7px;
 }
 
 

@@ -27,9 +27,10 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	
 <?php
 include "includes/conexao.php";
-            $query = sprintf("SELECT id, Nome, Quantidade, MuscAlvo, ExercAcad FROM exercicios");
+            $query = sprintf("SELECT * FROM exercicios");
 
 // executa a query
 $dados = mysqli_query( $conexao,$query) or die(mysqli_error());
@@ -38,91 +39,69 @@ $linha = mysqli_fetch_assoc($dados);
 // calcula quantos dados retornaram
 $total = mysqli_num_rows($dados);
 ?>
+
+<section id="main-content">
+          <section class="text-light wrapper centralizar">
+              <div class="row"> <div class="col-md-1 align-self-end main-chart"></div>
+                  <div class="col-md-10 align-self-end main-chart">
+
 <a href="ADM_ADD.php">
      <button class="contact3-form-btn">Voltar</button>
 </a>
-<div class="limiter" >
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100 ver1 m-b-110">
-					<div class="table100-head">
-						<table>
-							<thead>
-								<tr class="row100 head">
-									<th class="cell100 column1">Id</th>
-									<th class="cell100 column2">Nome</th>
-									<th class="cell100 column3">Quantidade</th>
-									<th class="cell100 column4">MuscAlvo</th>
-                                    <th class="cell100 column5">ExercAcad</th>
-                                    <th class="cell100 column6">Editar</th>
-									<th class="cell100 column7">Excluir</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-                    <?php
-                                $i = -1;
-                                if($total > 0) {
-                                $i++;
-                                do {
-                        ?>
-                    <div class="table100-body js-pscroll">
-						<table>
-							<tbody>
-								<tr class="row100 body">
-									<td class="cell100 column1"><?=$linha['id']?></td>
-									<td class="cell100 column2"><?=$linha['Nome']?></td>
-									<td class="cell100 column3"><?=$linha['Quantidade']?></td>
-									<td class="cell100 column4"><?=$linha['MuscAlvo']?></td>
-                                    <td class="cell100 column5"><?=$linha['ExercAcad']?></td>
-                                    <td class="cell100 column6">  <a class="oioi" href="ADM_Edit.php?codigo=<?=$linha['id']?>1">Editar</td>
-                                    <td class="cell100 column7">  <a class="oioi" href="SalvarBD/ADM_Excluir.php?codigo=<?=$linha['id']?>1">Excluir</td>
-								</tr>
-							</tbody>
-						</table>
-                    </div>
-                    <?php
-                    
-// finaliza o loop que vai mostrar os dados
-          $i++;
-}while($linha = mysqli_fetch_assoc($dados));
 
 
-}
+<table class="table bg-success">
+    <thead class="bg-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th class="text-center" scope="col">ID</th>
+      <th class="text-center" scope="col">Nome</th>
+      <th class="text-center" scope="col">Quantidade</th>
+      <th class="text-center" scope="col">Musculo Alvo</th>
+	  <th class="text-center" scope="col">Demonstração</th>
+	  <th class="text-center" scope="col">Editar</th>
+	  <th class="text-center" scope="col">Excluir</th>
+    </tr>
+    </thead>
+  <tbody>
+    <tr>
+      
+  <?php
+    $e = 0;                                             
+    do {
 
-mysqli_free_result($dados);
-?>
-				</div>
-			</div>
-		</div>
-	</div>
+    ?>                                                
+      <th scope="row"><?=$e+1?></th>
+      <td><?=utf8_encode($linha['ID'])?></td>
+	  <td><?=utf8_encode($linha['Nome'])?></td>
+	  <td><?=$linha['Quantidade']?></td>
+	  <td><?=$linha['MuscAlvo']?></td>
+      <td><a class="oioi" href="<?=$linha['Link']?>" target="_blank">
+	  <i class="fa fa-youtube-play" aria-hidden="true"></i></td>
+	  
+	  <td><a class="oioi" href="ADM_Edit.php?codigo=<?=$linha['ID']?>">Editar</td>
+       <td><a class="oioi" href="SalvarBD/ADM_Excluir.php?codigo=<?=$linha['ID']?>">Excluir</td>
 
-<ul class="resultado">
-</ul>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-<script type="text/javascript" src="personalizadoaula.js"></script>
-<br>
+  </tr>
 
+<?php 
 
-<!--===============================================================================================-->	
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function(){
-			var ps = new PerfectScrollbar(this);
+          $e++;
+          }while( $linha = mysqli_fetch_assoc($dados));
+       
+          mysqli_free_result($dados);
+         
+			?>
+				  
+	
+  </tbody>
+	  </table>   
+	  
+	  </div><!-- /col-lg-3 -->
+      
+	  </div> 
+  </section>
+</section>
 
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
 </body>
 </html>
