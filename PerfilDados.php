@@ -69,7 +69,7 @@ header("location:index.php");
                               </div>
                           </div>
                           <div class="form-group">
-                              <label class="col-sm-1 col-sm-2 control-label">&nbsp;<img src="https://img.icons8.com/metro/26/000000/new-post.png">
+                              <label class="col-sm-1 col-sm-2 control-label"><font color="Black">&nbsp;&nbsp;Email</font></label>
 
 </font></label>
                               <div class="col-sm-10">

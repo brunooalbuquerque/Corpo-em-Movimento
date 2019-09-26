@@ -4,10 +4,10 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-   
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -38,11 +38,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
     <script src="assets/js/chart-master/Chart.js"></script>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 <?php
 include "IMC.php";
 ?>
@@ -54,12 +50,14 @@ include "IMC.php";
               
     <p class="centered"><a href="perfil.php"><img src="img/logoreal.png" class="img-circle" width="60"></a></p>
               	  <h5 class="centered"><?=$_SESSION['user'];?></h5><hr></hr>
-                   <h5 class="centered"><span>IMC: </span><?=$IMC;?> <i class="fa fa-heartbeat" aria-hidden="true"></i></h5>
+
+                   <h5 class="centered" data-toggle="tooltip" data-html="true" 
+      title="<h5>Peso/Altura²</h5>"><span>IMC: </span><?=$IMC;?> 
+      <i class="fa fa-heartbeat" aria-hidden="true"></i></h5>
                     <h5 class="centered"><?=$classificacao;?></h5>
                     <hr></hr>
               	  	
                   <li class="mt">
-                  
                       <a class="<?php if($page == "perfil"){echo "active";} ?>" href="Perfil.php">
                           <i class="fa fa-user"></i>
                           <span>Perfil</span>
@@ -91,7 +89,6 @@ include "IMC.php";
                           <i class="fa fa-file-text"></i>
                           <span>Termos e Condições de uso</span>
                       </a>
-                     
                   </li>
                 
                   <li class="sub-menu">
@@ -106,3 +103,10 @@ include "IMC.php";
           </div>
       </aside>
 </html>
+
+<!-- //script do tooltip -->
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  
+})</script>

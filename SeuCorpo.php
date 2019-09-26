@@ -136,9 +136,15 @@ echo utf8_encode($dica);
           		<div class="col-lg-5"> 
 
               </div>
+              
             </div>  
           </section>
-      </section>
+          <div class="col-lg-9 col-md-11">
+        <p class="text-right" font-color="black"  float:right;>*A tabela é gerada e voce deve inserir a <br>
+      quantidade de tempo e repetições a gosto</p>
+    </div>
+  
+  </section>
       
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 <script type="text/javascript" src="personalizadoaula.js"></script>

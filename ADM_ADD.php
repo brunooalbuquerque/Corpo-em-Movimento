@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Adicionar Exercicio/Alimento</title>
+	<title>Adicionar Exercício</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="img/LogoIcon.ico"/>
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -24,7 +25,7 @@
 </head>
 <body>
 
-<div class="bg-contact3" style="background-image: url('img/bg-01.jpg');">
+<div class="bg-contact3">
 <div class="container-contact3">
 	<div class="wrap-contact3">
 		<form  class="contact3-form validate-form" method="POST" action="SalvarBD/SaveExerc.php" enctype="multipart/form-data">
@@ -95,16 +96,6 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main3.js"></script>
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
 
 </body>
 </html>

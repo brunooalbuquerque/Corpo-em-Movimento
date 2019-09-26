@@ -103,7 +103,7 @@ include "includes/sidebar.php";
 
        <form name="saveQtd" class = "centralizar" method="post" action="SalvarBD/SaveQuantia.php?oi" id="form">
 
-<table class="table bg-success">
+<table class="table bg-success table-responsive">
     <thead class="bg-dark">
     <tr>
       <th scope="col">#</th>
@@ -147,7 +147,9 @@ $NNN=$exerc_dial['exer_dia'];
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>
   </tbody>
-  
+
+
+
 <style>
 .inputquantia{
   padding: 15px;
@@ -194,8 +196,15 @@ $NNN=$exerc_dial['exer_dia'];
 </div><!-- / calendar -->
                       
                   </div><!-- /col-lg-3 -->
-      
-              </div> 
+                  
+             
+              </div>  
+          
+          <div class="col-lg-9 col-md-11">
+        <p class="text-right" font-color="black"  float:right;>*A tabela é gerada e voce pode inserir a <br>
+      quantidade de tempo e/ou repetições a gosto.</p>
+    </div>
+
           </section>
       </section>
 
@@ -318,7 +327,7 @@ function attexerc() {
             // (string | mandatory) the heading of the notification
             title: 'Bem Vindo(a)  <br><?=$_SESSION['user']; ?>!',
             // (string | mandatory) the text inside the notification
-            text: '  <a  target="_blank" style="color:#ffd777">a</a>.',
+            text: '<a  target="_blank" style="color:#ffd777"></a>',
             // (string | optional) the image to display on the left
             image: 'img/logoreal.png',
             // (bool | optional) if you want it to fade out on its own or just sit there

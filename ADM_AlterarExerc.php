@@ -5,6 +5,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 	<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="img/LogoIcon.ico"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -27,7 +28,9 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
+<style>body {background-color: #f2f2f2 ;}</style>
+
 <?php
 include "includes/conexao.php";
             $query = sprintf("SELECT * FROM exercicios");
@@ -49,8 +52,7 @@ $total = mysqli_num_rows($dados);
      <button class="contact3-form-btn">Voltar</button>
 </a>
 
-
-<table class="table bg-success">
+<table class="table-responsive table bg-success">
     <thead class="bg-dark">
     <tr>
       <th scope="col">#</th>
@@ -94,9 +96,9 @@ $total = mysqli_num_rows($dados);
 			?>
 				  
 	
-  </tbody>
-	  </table>   
-	  
+    </tbody>
+  </table>   
+
 	  </div><!-- /col-lg-3 -->
       
 	  </div> 
