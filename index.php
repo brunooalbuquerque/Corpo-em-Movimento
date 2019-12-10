@@ -50,7 +50,7 @@ $teste=1;
             <span class="fa fa-bars color-white"></span>
           </button>
           <h1> 
-      <a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;"><img src="img/logoreal.png" data-300="line-height:50px; height:50px;"/> &nbsp;Corpo em Movimento
+      <a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;">&nbsp;Corpo em Movimento
      </a></h1>
         </div>
         <div class="navbar-collapse collapse">
