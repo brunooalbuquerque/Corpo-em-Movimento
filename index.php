@@ -60,6 +60,7 @@ $teste=1;
             <li><a href="#services">O que Oferecemos</a></li>
             <li><a href="#team">Time</a></li>
             <li><a id="login" href="login.php">Login</a></li>
+            <li><a id="cadastrar" href="sign_in.php">Cadastrar</a></li>
             <li><a id="perfil" href="perfil.php">Meu Perfil</a></li>
             <li><a id= "sair" href="SalvarBD/logout.php">Sair</a></li>
           </ul>
@@ -77,6 +78,7 @@ if(teste>0){
 document.getElementById("sair").style.display = "show";
 document.getElementById("perfil").style.display = "show";
 document.getElementById("login").style.display = "none";
+document.getElementById("cadastrar").style.display = "none";
 }else{
   document.getElementById("perfil").style.display = "none";
   document.getElementById("sair").style.display = "none";

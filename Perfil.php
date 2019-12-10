@@ -49,7 +49,7 @@ include "includes/sidebar.php";
           
           $linha = mysqli_fetch_assoc($dados);
           $QuantExcerc = mysqli_num_rows($dados);
-
+          date_default_timezone_set('America/Sao_Paulo');
           $datas1 = date('d-m-Y', strtotime($linha['Datas']));
   
 
@@ -139,10 +139,7 @@ $NNN=$exerc_dial['exer_dia'];
     class="form-control round-form centralizar" data-toggle="tooltip" data-html="true" 
       title="<h5>Quantidade Recomendada: <?=$linha['Quantidade'];?>
       </h5>" data-placement="top" required></center></td>
-    
-    
-      <td><a><button class="oioi" onclick="attoneexerc();">
-      <i class="fa fa-youtube-play" aria-hidden="true"><?=$linha['id_exercicio']?></button></a></i></td>
+      <td><?=$linha['MuscAlvo']?></td>
       <td><a class="oioi" href="<?=$linha['Link']?>" target="_blank">
       <i class="fa fa-youtube-play " aria-hidden="true"></i></td>
       </tr>

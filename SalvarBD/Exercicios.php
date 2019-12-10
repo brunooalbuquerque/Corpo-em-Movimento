@@ -6,6 +6,7 @@ if(!$_SESSION['logado'] && !(isset($_SESSION['user']) && !empty($_SESSION['user'
 header("location:index.php");
 } 
 $id_usuario=$_SESSION['id'];
+date_default_timezone_set('America/Sao_Paulo');
 $data = date('Y-m-d');
 
 $takeexer_dia = sprintf("SELECT exer_dia FROM formcorp WHERE id_usuario=$id");

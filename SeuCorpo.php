@@ -140,8 +140,9 @@ echo utf8_encode($dica);
             </div>  
           </section>
           <div class="col-lg-9 col-md-11">
-        <p class="text-right" font-color="black"  float:right;>*A tabela é gerada e voce deve inserir a <br>
-      quantidade de tempo e repetições a gosto</p>
+        <p class="text-right" font-color="black"  float:right;>*Formula para o calculo do IMC
+         retirada da <a href="http://www.euro.who.int/en/health-topics/disease-prevention/nutrition/a-healthy-lifestyle/body-mass-index-bmi" >Organização Mundial da Saúde</a>,<br>
+          peso minímo/máximo são derivadas do IMC</p>
     </div>
   
   </section>

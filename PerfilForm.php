@@ -16,17 +16,18 @@ header("location:index.php");
 $id = $_SESSION['id'];
  ?>
   <body>
-  <section id="container" >
-
-    <header class="header black-bg">
+  
+  <header class="header black-bg">
               <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" ></div>
+              <font color="white"><div class="fa fa-bars tooltips" data-placement="right" ></div></font>
               </div>
             <!--logo start-->
             <a href="index.php" class="logo"><b>Corpo em Movimento</b></a>
             <!--logo end-->
     
     </header>
+  <section id="container" >
+
      
               <?php 
                $page="dados";
@@ -105,7 +106,7 @@ input::-webkit-inner-spin-button {
         </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-4 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Quantidade de Exercícios</font></label>
+                <label class="col-sm-4 col-sm-2 control-label"><font color="Black"> &nbsp;&nbsp;Quantidade de Exercícios diários</font></label>
                 <div class="col-sm-6">
                     <input  type="number" name="quant" maxlength="1" max="4" min="1" id="quant" placeholder="Exercicios por dia" required class="form-control round-form" value =<?=$linha['exer_dia']?>>
                 </div>

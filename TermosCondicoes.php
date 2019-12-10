@@ -118,7 +118,7 @@ f) Resolução de problemas no Portal ou Aplicativo, verificação e proteção 
 <br>
 6.9. O ALUNOS DA FATEC é responsável por qualquer software de terceiros utilizado para comunicar Informações à API da MERCOS. Diante disso, qualquer acesso irregular, falhas de comunicação entre a API e os demais softwares são de responsabilidade exclusiva do ALUNOS DA FATEC já que a MERCOS apenas libera o acesso à API para que o ALUNOS DA FATEC consiga realizar a comunicação entre o Aplicativo e outros softwares terceiros ALUNOS DA FATECs pelo ALUNOS DA FATEC.<br>
 <br>
-6.10. O ALUNOS DA FATEC não é responsável por qualquer dano fisico ou de saúde que o usuário possa ter, o ALUNOS DA FATEC recomenda que se procure um especialista antes de iniciar as práticas.<br>
+6.10. O ALUNOS DA FATEC não é responsável por qualquer dano físico ou de saúde que o usuário possa ter, o ALUNOS DA FATEC recomenda que se procure um especialista antes de iniciar as práticas.<br>
 <br>
 
 7. DO USO DO APLICATIVO<br>
